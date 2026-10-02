@@ -2,9 +2,9 @@
 <html lang="es" class="scroll-smooth dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KINETIC LAB // Human Performance & Bio-Lab Gym</title>
-    <meta name="description" content="Centro de alto rendimiento, biohacking, reserva de actividades y nutrición deportiva. Pedidos y suscripciones directo por WhatsApp." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>KINETIC LAB // Bio-Performance & Health Gym</title>
+    <meta name="description" content="Centro de alto rendimiento, biohacking, reserva de actividades y nutrición deportiva en Argentina. Pedidos y reservas directo por WhatsApp." />
     
     <!-- Favicon SVG -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ccff00' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polygon points='13 2 3 14 12 14 11 22 21 10 12 10 13 2'></polygon></svg>" />
@@ -12,7 +12,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,15 +45,16 @@
         font-family: 'Plus Jakarta Sans', sans-serif;
         background-color: #07080a;
         color: #e2e8f0;
+        -webkit-tap-highlight-color: transparent;
       }
       .font-display { font-family: 'Syne', sans-serif; }
       .font-mono { font-family: 'Space Grotesk', monospace; }
       
       .cyber-grid {
-        background-size: 40px 40px;
+        background-size: 32px 32px;
         background-image: 
-          linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+          linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
       }
 
       @keyframes marquee {
@@ -63,76 +64,81 @@
       .animate-marquee {
         display: flex;
         width: 200%;
-        animation: marquee 24s linear infinite;
+        animation: marquee 22s linear infinite;
       }
       .animate-marquee:hover { animation-play-state: paused; }
 
       @keyframes pulseGlow {
-        0%, 100% { opacity: 0.35; transform: scale(1); }
-        50% { opacity: 0.7; transform: scale(1.05); }
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 0.65; transform: scale(1.04); }
       }
       .animate-pulse-glow { animation: pulseGlow 4s ease-in-out infinite; }
 
-      ::-webkit-scrollbar { width: 6px; }
+      /* Ocultar barra de scroll en scroll horizontal en mobile */
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      ::-webkit-scrollbar { width: 5px; height: 5px; }
       ::-webkit-scrollbar-track { background: #08090c; }
       ::-webkit-scrollbar-thumb { background: #252833; border-radius: 9999px; }
       ::-webkit-scrollbar-thumb:hover { background: #ccff00; }
     </style>
   </head>
-  <body class="bg-[#07080a] text-[#e2e8f0] antialiased selection:bg-[#ccff00] selection:text-black overflow-x-hidden">
+  <body class="bg-[#07080a] text-[#e2e8f0] antialiased selection:bg-[#ccff00] selection:text-black overflow-x-hidden min-h-screen">
 
-    <!-- NAVBAR -->
-    <header class="fixed top-0 left-0 right-0 z-40 bg-[#08090c]/90 backdrop-blur-xl border-b border-white/10 py-3.5 shadow-2xl transition-all">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- NAVBAR (TOTALMENTE ADAPTABLE A MÓVIL Y DESKTOP) -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-[#08090c]/90 backdrop-blur-xl border-b border-white/10 py-3 shadow-2xl transition-all">
+      <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between">
           
           <!-- Logo -->
-          <a href="#" class="flex items-center gap-3 group">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ccff00] to-[#00f0ff] p-[2px] transition-transform group-hover:scale-105">
-              <div class="w-full h-full bg-[#08090c] rounded-[10px] flex items-center justify-center text-[#ccff00] font-black text-lg">
+          <a href="#" class="flex items-center gap-2.5 group">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[#ccff00] to-[#00f0ff] p-[2px] transition-transform group-hover:scale-105 shrink-0">
+              <div class="w-full h-full bg-[#08090c] rounded-[10px] flex items-center justify-center text-[#ccff00] font-black text-base sm:text-lg">
                 ⚡
               </div>
             </div>
             <div class="flex flex-col text-left">
-              <span class="font-display font-extrabold text-xl tracking-tight text-white flex items-center gap-1.5">
-                KINETIC <span class="text-[#ccff00] text-sm font-mono tracking-widest">//LAB</span>
+              <span class="font-display font-extrabold text-lg sm:text-xl tracking-tight text-white flex items-center gap-1">
+                KINETIC <span class="text-[#ccff00] text-xs sm:text-sm font-mono tracking-widest">//LAB</span>
               </span>
-              <span class="text-[10px] font-mono tracking-wider text-gray-400 uppercase hidden sm:block">
-                Human Performance & Biohack
+              <span class="text-[9px] font-mono tracking-wider text-gray-400 uppercase -mt-0.5">
+                Buenos Aires • Bio-Performance
               </span>
             </div>
           </a>
 
-          <!-- Live Gym Status Badge -->
-          <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono">
+          <!-- Center Status Badge (Desktop) -->
+          <div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono">
             <span class="relative flex h-2 w-2">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ccff00] opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2 w-2 bg-[#ccff00]"></span>
             </span>
-            <span class="text-gray-300">AFORO EN VIVO:</span>
-            <span class="text-[#ccff00] font-bold">64%</span>
+            <span class="text-gray-300">AFORO:</span>
+            <span class="text-[#ccff00] font-bold">58%</span>
             <span class="text-gray-500">•</span>
-            <span class="text-gray-400">ABIERTO HASTA 23:00</span>
+            <span class="text-gray-400">PALERMO HOLLYWOOD</span>
           </div>
 
-          <!-- Navigation Links -->
-          <nav class="hidden md:flex items-center gap-1.5">
-            <a href="#actividades" class="px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Actividades</a>
-            <a href="#novedades" class="px-3 py-2 rounded-lg text-sm text-[#ccff00] hover:bg-[#ccff00]/10 transition-colors flex items-center gap-1.5 font-semibold">
+          <!-- Desktop Navigation Links -->
+          <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+            <a href="#actividades" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Actividades</a>
+            <a href="#novedades" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm text-[#ccff00] hover:bg-[#ccff00]/10 transition-colors flex items-center gap-1 font-semibold">
               <span>✨ Novedades</span>
             </a>
-            <a href="#tienda" class="px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Suplementos</a>
-            <a href="#bio-matcher" class="px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Bio-Matcher</a>
-            <a href="#planes" class="px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Membresías</a>
+            <a href="#tienda" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Suplementos</a>
+            <a href="#bio-matcher" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Bio-Matcher</a>
+            <a href="#planes" class="px-2.5 py-1.5 rounded-lg text-xs lg:text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Planes</a>
           </nav>
 
           <!-- Right Action Buttons -->
-          <div class="flex items-center gap-2 sm:gap-3">
-            <!-- Settings Modal Button (Configure WhatsApp) -->
+          <div class="flex items-center gap-1.5 sm:gap-2.5">
+            <!-- Settings Modal Trigger (WhatsApp Config) -->
             <button 
               onclick="openSettingsModal()" 
-              class="p-2 sm:p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-400 hover:text-[#ccff00] transition-colors"
-              title="Configurar número de WhatsApp receptor"
+              class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-400 hover:text-[#ccff00] transition-colors"
+              title="Configurar número de WhatsApp para pedidos"
+              aria-label="Ajustes WhatsApp"
             >
               ⚙️
             </button>
@@ -140,133 +146,161 @@
             <!-- Shopping Cart Button -->
             <button 
               onclick="openCartDrawer()" 
-              class="relative flex items-center gap-2 px-3 py-2 rounded-xl bg-[#141720] hover:bg-[#1a1e2a] border border-white/10 text-white transition-all hover:border-[#ccff00]/40"
+              class="relative flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-2 rounded-xl bg-[#141720] hover:bg-[#1a1e2a] border border-white/10 text-white transition-all hover:border-[#ccff00]/40"
+              aria-label="Abrir Carrito"
             >
               <span>🛒</span>
               <span id="nav-cart-subtotal" class="text-xs font-mono font-bold hidden sm:inline">TIENDA</span>
-              <span id="cart-badge" class="w-5 h-5 rounded-full bg-[#ccff00] text-black text-xs font-bold flex items-center justify-center hidden">
+              <span id="cart-badge" class="w-5 h-5 rounded-full bg-[#ccff00] text-black text-[11px] font-bold flex items-center justify-center hidden">
                 0
               </span>
             </button>
 
-            <!-- Direct WhatsApp Button -->
+            <!-- WhatsApp Direct (Desktop/Tablet) -->
             <button 
               onclick="sendDirectWhatsApp()" 
-              class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/30 text-[#25D366] font-semibold text-xs font-mono tracking-wider transition-all hover:scale-105"
+              class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/30 text-[#25D366] font-semibold text-xs font-mono tracking-wider transition-all hover:scale-105"
             >
               <span>💬</span>
               <span>WHATSAPP</span>
+            </button>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button 
+              onclick="toggleMobileMenu()" 
+              class="md:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white"
+              aria-label="Menú Móvil"
+            >
+              <span id="mobile-menu-icon" class="text-base font-bold">☰</span>
             </button>
           </div>
 
         </div>
       </div>
+
+      <!-- Mobile Navigation Drawer / Dropdown -->
+      <div id="mobile-menu" class="hidden md:hidden px-4 pt-3 pb-4 border-t border-white/10 mt-2 bg-[#090b0f] space-y-2 text-left">
+        <div class="flex items-center justify-between py-1 px-3 rounded-lg bg-white/5 text-[11px] font-mono text-gray-300 mb-2">
+          <span>AFORO EN VIVO: <strong class="text-[#ccff00]">58%</strong></span>
+          <span>PALERMO HOLLYWOOD</span>
+        </div>
+        <a href="#actividades" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl bg-white/[0.02] text-sm text-gray-200 font-medium">🏋️ Actividades & Clases</a>
+        <a href="#novedades" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl bg-[#ccff00]/10 text-sm text-[#ccff00] font-bold">✨ Novedades & Hitos</a>
+        <a href="#tienda" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl bg-white/[0.02] text-sm text-gray-200 font-medium">💊 Tienda de Suplementos</a>
+        <a href="#bio-matcher" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl bg-white/[0.02] text-sm text-gray-200 font-medium">🧬 Bio-Matcher Interactivo</a>
+        <a href="#planes" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-xl bg-white/[0.02] text-sm text-gray-200 font-medium">💎 Membresías & Planes</a>
+        <button onclick="toggleMobileMenu(); sendDirectWhatsApp();" class="w-full py-3 rounded-xl bg-[#25D366] text-black font-bold text-xs font-mono flex items-center justify-center gap-2 mt-2">
+          <span>💬</span> Consultar al WhatsApp de Kinetic
+        </button>
+      </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="relative min-h-[92vh] pt-32 pb-16 flex flex-col justify-between overflow-hidden cyber-grid">
+    <!-- HERO SECTION (PENSADO PARA MÓVILES Y DESKTOP) -->
+    <section class="relative pt-24 sm:pt-32 pb-12 sm:pb-16 flex flex-col justify-between overflow-hidden cyber-grid">
       <!-- Glow Orbs -->
-      <div class="absolute top-1/4 -left-40 w-96 h-96 bg-[#ccff00]/10 rounded-full blur-[140px] pointer-events-none animate-pulse-glow"></div>
-      <div class="absolute top-1/3 -right-40 w-96 h-96 bg-[#00f0ff]/10 rounded-full blur-[140px] pointer-events-none animate-pulse-glow" style="animation-delay: 2s;"></div>
+      <div class="absolute top-1/4 -left-32 w-72 h-72 sm:w-96 sm:h-96 bg-[#ccff00]/10 rounded-full blur-[110px] pointer-events-none animate-pulse-glow"></div>
+      <div class="absolute top-1/3 -right-32 w-72 h-72 sm:w-96 sm:h-96 bg-[#00f0ff]/10 rounded-full blur-[110px] pointer-events-none animate-pulse-glow" style="animation-delay: 2s;"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          <!-- Left Column -->
-          <div class="lg:col-span-7 space-y-6 text-left">
-            <div class="inline-flex flex-wrap items-center gap-2 p-1.5 pr-4 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md">
-              <span class="px-3 py-1 rounded-full bg-[#ccff00] text-black text-xs font-mono font-extrabold tracking-wider uppercase flex items-center gap-1.5">
+          <!-- Left Column Content -->
+          <div class="lg:col-span-7 space-y-4 sm:space-y-6 text-left">
+            <div class="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 p-1 sm:p-1.5 pr-3 sm:pr-4 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md">
+              <span class="px-2.5 py-0.5 sm:py-1 rounded-full bg-[#ccff00] text-black text-[10px] sm:text-xs font-mono font-extrabold uppercase">
                 ⚡ BIO-PERFORMANCE 2026
               </span>
-              <span class="text-xs font-mono text-gray-300 flex items-center gap-1">
-                ✨ Salud celular & Fuerza divergente
+              <span class="text-[10px] sm:text-xs font-mono text-gray-300">
+                Salud celular & Fuerza pura
               </span>
             </div>
 
-            <h1 class="text-4xl sm:text-6xl xl:text-7xl font-display font-extrabold text-white tracking-tight leading-[1.05]">
+            <!-- Title -->
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-extrabold text-white tracking-tight leading-[1.08]">
               REDEFINE TU <br />
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-[#85ff7a] to-[#00f0ff] drop-shadow-[0_0_30px_rgba(204,255,0,0.3)]">
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-[#85ff7a] to-[#00f0ff]">
                 BIOLOGÍA.
               </span>
               <br />
               DOMINA TU LÍMITE.
             </h1>
 
-            <p class="text-base sm:text-lg text-gray-300 max-w-xl font-normal leading-relaxed">
-              El primer centro donde la <strong class="text-white font-semibold">fuerza biomecánica</strong>, la <strong class="text-white font-semibold">recuperación térmica</strong> y la <strong class="text-[#ccff00] font-semibold">suplementación pura</strong> convergen. Reserva tus actividades y gestiona tus pedidos directo por WhatsApp.
+            <!-- Subtitle -->
+            <p class="text-sm sm:text-base lg:text-lg text-gray-300 max-w-xl font-normal leading-relaxed">
+              El centro de entrenamiento en Buenos Aires donde la <strong class="text-white font-semibold">fuerza biomecánica</strong>, la <strong class="text-white font-semibold">recuperación térmica celular</strong> y la <strong class="text-[#ccff00] font-semibold">suplementación limpia</strong> convergen. Reserva tus clases y gestiona tus pedidos directo por WhatsApp.
             </p>
 
-            <!-- Hero CTAs -->
-            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <!-- Hero CTAs (Columna en móvil, fila en desktop) -->
+            <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-3 pt-1">
               <button 
                 onclick="openBookingModal('hyrox-protocol')"
-                class="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#ccff00] text-black font-extrabold text-base transition-all duration-300 hover:bg-[#b8e600] hover:scale-[1.02] shadow-[0_0_25px_rgba(204,255,0,0.35)] active:scale-95"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-[#ccff00] text-black font-extrabold text-sm sm:text-base transition-all duration-300 hover:bg-[#b8e600] active:scale-95 shadow-[0_0_20px_rgba(204,255,0,0.3)]"
               >
                 <span>RESERVAR CLASE DE PRUEBA</span>
-                <span class="transition-transform group-hover:translate-x-0.5">↗</span>
+                <span>↗</span>
               </button>
 
               <a 
                 href="#tienda"
-                class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-white font-semibold text-sm transition-all hover:border-[#00f0ff]/50 hover:shadow-[0_0_20px_rgba(0,240,255,0.15)]"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-7 py-3 sm:py-4 rounded-2xl bg-white/[0.05] hover:bg-white/[0.08] border border-white/10 text-white font-semibold text-xs sm:text-sm transition-all hover:border-[#00f0ff]/50"
               >
                 <span>TIENDA DE SUPLEMENTOS</span>
-                <span class="text-xs px-2 py-0.5 rounded-full bg-[#00f0ff]/20 text-[#00f0ff] font-mono font-bold">
-                  8 FÓRMULAS
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#00f0ff]/20 text-[#00f0ff] font-mono font-bold">
+                  PRECIOS ARS
                 </span>
               </a>
             </div>
 
-            <!-- Stats -->
-            <div class="pt-4 grid grid-cols-3 gap-4 border-t border-white/10 max-w-lg">
+            <!-- Stats Bar -->
+            <div class="pt-3 grid grid-cols-3 gap-2 sm:gap-4 border-t border-white/10 max-w-lg text-left">
               <div>
-                <div class="text-2xl sm:text-3xl font-display font-extrabold text-white">1,450+</div>
-                <div class="text-xs font-mono text-gray-400 uppercase mt-0.5">Socios Activos</div>
+                <div class="text-xl sm:text-2xl lg:text-3xl font-display font-extrabold text-white">1,450+</div>
+                <div class="text-[10px] sm:text-xs font-mono text-gray-400 uppercase mt-0.5">Socios Activos</div>
               </div>
               <div>
-                <div class="text-2xl sm:text-3xl font-display font-extrabold text-[#ccff00]">3°C - 90°C</div>
-                <div class="text-xs font-mono text-gray-400 uppercase mt-0.5">Cryo & Sauna</div>
+                <div class="text-xl sm:text-2xl lg:text-3xl font-display font-extrabold text-[#ccff00]">3°C - 90°C</div>
+                <div class="text-[10px] sm:text-xs font-mono text-gray-400 uppercase mt-0.5">Cryo & Sauna</div>
               </div>
               <div>
-                <div class="text-2xl sm:text-3xl font-display font-extrabold text-[#00f0ff]">100%</div>
-                <div class="text-xs font-mono text-gray-400 uppercase mt-0.5">Vía WhatsApp</div>
+                <div class="text-xl sm:text-2xl lg:text-3xl font-display font-extrabold text-[#00f0ff]">100%</div>
+                <div class="text-[10px] sm:text-xs font-mono text-gray-400 uppercase mt-0.5">Por WhatsApp</div>
               </div>
             </div>
           </div>
 
-          <!-- Right Column Card -->
-          <div class="lg:col-span-5 relative">
-            <div class="relative rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-b from-white/10 to-transparent p-2 backdrop-blur-xl shadow-2xl">
-              <div class="relative h-[480px] sm:h-[540px] rounded-2xl overflow-hidden group">
+          <!-- Right Column Visual Card -->
+          <div class="lg:col-span-5 relative mt-4 lg:mt-0">
+            <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-b from-white/10 to-transparent p-1.5 sm:p-2 backdrop-blur-xl shadow-2xl">
+              <div class="relative h-[360px] sm:h-[460px] lg:h-[500px] rounded-xl sm:rounded-2xl overflow-hidden group">
                 <img 
-                  src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80" 
+                  src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" 
                   alt="Kinetic Athlete" 
                   class="w-full h-full object-cover object-center filter contrast-110 brightness-90 group-hover:scale-105 transition-transform duration-700" 
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08090c] via-black/40 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#08090c] via-black/35 to-transparent"></div>
 
-                <!-- Floating Holographic Badge -->
-                <div class="absolute top-4 left-4 right-4 flex items-center justify-between p-3 rounded-xl bg-black/60 backdrop-blur-md border border-white/10">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
-                    <span class="text-xs font-mono text-white uppercase tracking-wider font-semibold">SALA HYROX EN CURSO</span>
+                <!-- Floating Live Badge -->
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between p-2.5 rounded-xl bg-black/65 backdrop-blur-md border border-white/10">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                    <span class="text-[10px] sm:text-xs font-mono text-white uppercase tracking-wider font-semibold">SALA HYROX EN VIVO</span>
                   </div>
-                  <span class="text-xs font-mono text-[#ccff00] font-bold">ZONA 5 ATLETA</span>
+                  <span class="text-[10px] sm:text-xs font-mono text-[#ccff00] font-bold">ZONA 5 ATLETA</span>
                 </div>
 
-                <!-- Bottom Floating Overlay -->
-                <div class="absolute bottom-4 left-4 right-4 p-4 sm:p-5 rounded-2xl bg-[#0e1015]/90 backdrop-blur-md border border-white/10 text-left">
-                  <div class="flex items-center justify-between mb-2">
-                    <span class="text-[11px] font-mono uppercase tracking-widest text-[#00f0ff] font-bold">PROTOCOL PROTO-01</span>
-                    <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-mono font-bold">CUPOS DISPONIBLES</span>
+                <!-- Bottom Floating Card -->
+                <div class="absolute bottom-3 left-3 right-3 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#0e1015]/90 backdrop-blur-md border border-white/10 text-left">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-[#00f0ff] font-bold">PROTOCOLO ESTRELLA</span>
+                    <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[9px] sm:text-[10px] font-mono font-bold">CUPOS LIMITADOS</span>
                   </div>
-                  <h3 class="text-lg font-bold font-display text-white mb-1">Hyrox & Contrast Thermal Lab</h3>
-                  <p class="text-xs text-gray-300 line-clamp-2 mb-3">
-                    60 minutos de desafío funcional seguido de inmersión en tinas frías para regeneración neuromuscular instantánea.
+                  <h3 class="text-sm sm:text-base font-bold font-display text-white mb-1">Hyrox & Contrast Thermal Lab</h3>
+                  <p class="text-[11px] sm:text-xs text-gray-300 line-clamp-2 mb-2.5">
+                    60 minutos de acondicionamiento atlético seguido de tinas frías para regeneración instantánea.
                   </p>
                   <div class="flex items-center justify-between pt-2 border-t border-white/10">
-                    <span class="text-xs text-gray-300 font-mono">⏱️ Hoy a las 19:00 hs</span>
-                    <button onclick="openBookingModal('hyrox-protocol')" class="px-3 py-1.5 rounded-lg bg-[#ccff00] text-black font-extrabold text-xs hover:bg-[#b8e600] transition-colors">
+                    <span class="text-[11px] text-gray-300 font-mono">⏱️ Turnos hoy desde 18:00 hs</span>
+                    <button onclick="openBookingModal('hyrox-protocol')" class="px-3 py-1.5 rounded-lg bg-[#ccff00] text-black font-extrabold text-[11px] sm:text-xs hover:bg-[#b8e600] transition-colors">
                       RESERVAR ↗
                     </button>
                   </div>
@@ -279,279 +313,279 @@
       </div>
 
       <!-- Infinite Kinetic Ticker Banner -->
-      <div class="w-full mt-12 py-3 bg-[#ccff00] overflow-hidden whitespace-nowrap border-y border-[#ccff00] select-none">
+      <div class="w-full mt-8 sm:mt-12 py-2.5 sm:py-3 bg-[#ccff00] overflow-hidden whitespace-nowrap border-y border-[#ccff00] select-none">
         <div class="animate-marquee flex items-center gap-8">
           <span class="text-black font-mono font-extrabold text-xs sm:text-sm tracking-widest uppercase flex items-center gap-2">
-            // HYROX OFFICIAL TRAINING HUB • // CRYO & CONTRAST THERAPY A 3°C • // CREAPURE® & WHEY HYDRO-ISOLATE • // ENTRENAMIENTO BIOMECÁNICO • // BIOHACKING & LONGEVIDAD ACTIVA • // RESERVAS Y PEDIDOS POR WHATSAPP • // HYROX OFFICIAL TRAINING HUB • // CRYO & CONTRAST THERAPY A 3°C • // CREAPURE® & WHEY HYDRO-ISOLATE • // ENTRENAMIENTO BIOMECÁNICO • // BIOHACKING & LONGEVIDAD ACTIVA • // RESERVAS Y PEDIDOS POR WHATSAPP
+            // HYROX OFICIAL ARGENTINA • // CRYO & SAUNA INFRARROJO A 3°C • // CREAPURE® & WHEY ISOLATE EN ARS • // PALERMO HOLLYWOOD • // RESERVAS Y PEDIDOS DIRECTO POR WHATSAPP • // BIOMECÁNICA & LONGEVIDAD • // HYROX OFICIAL ARGENTINA • // CRYO & SAUNA INFRARROJO A 3°C • // CREAPURE® & WHEY ISOLATE EN ARS • // PALERMO HOLLYWOOD • // RESERVAS Y PEDIDOS DIRECTO POR WHATSAPP
           </span>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN NOVEDADES DESTACADA -->
-    <section id="novedades" class="py-24 relative overflow-hidden bg-[#07080a]">
+    <!-- SECCIÓN NOVEDADES DESTACADA (CON FILTROS SCROLLABLES EN MÓVIL) -->
+    <section id="novedades" class="py-16 sm:py-24 relative overflow-hidden bg-[#07080a]">
       <div class="absolute top-1/2 left-0 w-80 h-80 bg-[#ccff00]/5 rounded-full blur-[120px] pointer-events-none"></div>
       
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 text-left">
-          <div class="space-y-3">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-xs font-mono text-[#ccff00] font-bold uppercase tracking-wider">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 sm:gap-6 text-left">
+          <div class="space-y-2 sm:space-y-3">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[10px] sm:text-xs font-mono text-[#ccff00] font-bold uppercase tracking-wider">
               🔔 RADAR DE NOVEDADES & COMUNIDAD
             </div>
-            <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
-              LO ÚLTIMO EN <br />
+            <h2 class="text-2xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight">
+              LO ÚLTIMO EN <br class="hidden sm:block" />
               <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] to-[#00f0ff]">KINETIC LAB</span>
             </h2>
-            <p class="text-sm sm:text-base text-gray-400 max-w-xl">
-              Nuevas zonas biomecánicas, lanzamientos de suplementación farmacéutica, competiciones y eventos exclusivos.
+            <p class="text-xs sm:text-sm text-gray-400 max-w-xl">
+              Nuevas zonas biomecánicas, lanzamientos de suplementación pura, competiciones y eventos exclusivos en Buenos Aires.
             </p>
           </div>
 
-          <!-- Filter Pills -->
-          <div class="flex flex-wrap gap-2">
-            <button data-news-filter="all" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-[#ccff00] text-black font-extrabold shadow-[0_0_15px_rgba(204,255,0,0.3)]">TODAS</button>
-            <button data-news-filter="instalaciones" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">ZONAS & SALUD</button>
-            <button data-news-filter="eventos" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">EVENTOS</button>
-            <button data-news-filter="tienda" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">TIENDA</button>
-            <button data-news-filter="talleres" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">TALLERES</button>
+          <!-- Filter Pills (Scroll horizontal suave en celular) -->
+          <div class="flex overflow-x-auto no-scrollbar gap-2 pb-2 md:pb-0 shrink-0">
+            <button data-news-filter="all" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-[#ccff00] text-black font-extrabold shadow-[0_0_15px_rgba(204,255,0,0.3)]">TODAS</button>
+            <button data-news-filter="instalaciones" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">ZONAS & SALUD</button>
+            <button data-news-filter="eventos" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">EVENTOS</button>
+            <button data-news-filter="tienda" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">TIENDA</button>
+            <button data-news-filter="talleres" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">TALLERES</button>
           </div>
         </div>
 
         <!-- Featured News Grid Container -->
-        <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        <div id="news-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
 
       </div>
     </section>
 
-    <!-- ACTIVIDADES & SESIONES SECTION -->
-    <section id="actividades" class="py-24 relative overflow-hidden bg-[#08090c]">
+    <!-- ACTIVIDADES & SESIONES (RESPONSIVE) -->
+    <section id="actividades" class="py-16 sm:py-24 relative overflow-hidden bg-[#08090c]">
       <div class="absolute top-1/3 -left-32 w-96 h-96 bg-[#00f0ff]/5 rounded-full blur-[140px] pointer-events-none"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 text-left">
-          <div class="space-y-3">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00f0ff]/10 border border-[#00f0ff]/30 text-xs font-mono text-[#00f0ff] font-bold uppercase tracking-wider">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 sm:gap-6 text-left">
+          <div class="space-y-2 sm:space-y-3">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00f0ff]/10 border border-[#00f0ff]/30 text-[10px] sm:text-xs font-mono text-[#00f0ff] font-bold uppercase tracking-wider">
               ⚡ ENTRENAMIENTO BIOMÉDICO
             </div>
-            <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
-              ACTIVIDADES & <br />
+            <h2 class="text-2xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight">
+              ACTIVIDADES & <br class="hidden sm:block" />
               <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#85ff7a] to-[#ccff00]">SESIONES GUIADAS</span>
             </h2>
-            <p class="text-sm sm:text-base text-gray-400 max-w-xl">
-              Protocolos diseñados para adaptaciones biológicas concretas: hipertrofia inteligente, VO2 Max, resiliencia nerviosa y longevidad celular.
+            <p class="text-xs sm:text-sm text-gray-400 max-w-xl">
+              Protocolos con adaptaciones biológicas concretas: hipertrofia guiada, capacidad pulmonar VO2 Max, resiliencia nerviosa y longevidad.
             </p>
           </div>
 
-          <!-- Category Filters -->
-          <div class="flex flex-wrap gap-2">
-            <button data-activity-filter="all" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-[#00f0ff] text-black font-extrabold shadow-[0_0_15px_rgba(0,240,255,0.3)]">TODAS</button>
-            <button data-activity-filter="endurance" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">RESISTENCIA & HYROX</button>
-            <button data-activity-filter="recovery" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">BIOHACKING & RECOVERY</button>
-            <button data-activity-filter="strength" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">FUERZA BIOMECÁNICA</button>
-            <button data-activity-filter="mobility" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">MOVILIDAD & FLOW</button>
-            <button data-activity-filter="combat" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">COMBATE</button>
+          <!-- Category Filters Scrollable -->
+          <div class="flex overflow-x-auto no-scrollbar gap-2 pb-2 md:pb-0 shrink-0">
+            <button data-activity-filter="all" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-[#00f0ff] text-black font-extrabold shadow-[0_0_15px_rgba(0,240,255,0.3)]">TODAS</button>
+            <button data-activity-filter="endurance" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">HYROX</button>
+            <button data-activity-filter="recovery" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">CRYO & SAUNA</button>
+            <button data-activity-filter="strength" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">FUERZA</button>
+            <button data-activity-filter="mobility" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">FLOW</button>
+            <button data-activity-filter="combat" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">BOXING</button>
           </div>
         </div>
 
         <!-- Activities Grid Container -->
-        <div id="activities-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        <div id="activities-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
 
       </div>
     </section>
 
-    <!-- TIENDA DE SUPLEMENTOS & GEAR -->
-    <section id="tienda" class="py-24 relative overflow-hidden bg-[#07080a]">
+    <!-- TIENDA DE SUPLEMENTOS & GEAR (VALORES EN PESOS ARGENTINOS) -->
+    <section id="tienda" class="py-16 sm:py-24 relative overflow-hidden bg-[#07080a]">
       <div class="absolute top-1/4 right-0 w-96 h-96 bg-[#ccff00]/5 rounded-full blur-[140px] pointer-events-none"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 text-left">
-          <div class="space-y-3">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-xs font-mono text-[#ccff00] font-bold uppercase tracking-wider">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 sm:gap-6 text-left">
+          <div class="space-y-2 sm:space-y-3">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[10px] sm:text-xs font-mono text-[#ccff00] font-bold uppercase tracking-wider">
               ✨ APOTECARIO & NUTRICIÓN BIOMÉDICA
             </div>
-            <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
-              TIENDA DE <br />
+            <h2 class="text-2xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight">
+              TIENDA DE <br class="hidden sm:block" />
               <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-[#85ff7a] to-[#00f0ff]">SUPLEMENTACIÓN & GEAR</span>
             </h2>
-            <p class="text-sm sm:text-base text-gray-400 max-w-xl">
-              Fórmulas limpias, sin rellenos innecesarios ni azúcares artificiales. Seleccionadas por fisiólogos para maximizar tu recuperación y rendimiento.
+            <p class="text-xs sm:text-sm text-gray-400 max-w-xl">
+              Fórmulas certificadas sin rellenos ni aditivos sintéticos. Precios accesibles y competitivos para Argentina, coordinables por WhatsApp.
             </p>
           </div>
 
-          <!-- Product Filters -->
-          <div class="flex flex-wrap gap-2">
-            <button data-product-filter="all" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-[#ccff00] text-black font-extrabold shadow-[0_0_15px_rgba(204,255,0,0.3)]">TODAS</button>
-            <button data-product-filter="strength" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">CREATINA CREAPURE®</button>
-            <button data-product-filter="muscle" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">WHEY ISOLATE</button>
-            <button data-product-filter="hydration" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">ELECTROLITOS</button>
-            <button data-product-filter="energy" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">PRE-WORKOUT</button>
-            <button data-product-filter="recovery" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">MAGNESIO & SUEÑO</button>
-            <button data-product-filter="gear" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">ACCESORIOS</button>
+          <!-- Product Filters Scrollable -->
+          <div class="flex overflow-x-auto no-scrollbar gap-2 pb-2 md:pb-0 shrink-0">
+            <button data-product-filter="all" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-[#ccff00] text-black font-extrabold shadow-[0_0_15px_rgba(204,255,0,0.3)]">TODAS</button>
+            <button data-product-filter="strength" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">CREATINA</button>
+            <button data-product-filter="muscle" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">PROTEÍNA</button>
+            <button data-product-filter="hydration" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">ELECTROLITOS</button>
+            <button data-product-filter="energy" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">PRE-WORKOUT</button>
+            <button data-product-filter="recovery" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">MAGNESIO</button>
+            <button data-product-filter="gear" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5">GEAR</button>
           </div>
         </div>
 
-        <!-- Guarantee Banner -->
-        <div class="mb-10 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#141720] to-[#0e1015] border border-white/10 flex flex-wrap items-center justify-between gap-4 text-left">
+        <!-- Argentine Guarantee & Payments Banner -->
+        <div class="mb-8 p-3.5 sm:p-5 rounded-2xl bg-gradient-to-r from-[#141720] to-[#0e1015] border border-white/10 flex flex-wrap items-center justify-between gap-3 text-left">
           <div class="flex items-center gap-3">
             <span class="text-2xl text-emerald-400">🛡️</span>
             <div>
-              <h4 class="text-sm font-bold text-white">Pureza y Calidad Farmacéutica Garantizada</h4>
-              <p class="text-xs text-gray-400">Certificados oficiales Creapure® e IFOS 5★ con materias primas sin aditivos sintéticos.</p>
+              <h4 class="text-xs sm:text-sm font-bold text-white">Pureza Garantizada • Medios de Pago Locales</h4>
+              <p class="text-[11px] sm:text-xs text-gray-400">Aceptamos Transferencia bancaria, Mercado Pago o Efectivo en recepción al retirar.</p>
             </div>
           </div>
-          <div class="text-xs font-mono text-[#00f0ff] flex items-center gap-2">
-            <span>PEDIDOS SEGUROS VINCULADOS A WHATSAPP</span>
+          <div class="text-[11px] font-mono text-[#00f0ff] flex items-center gap-2">
+            <span>COORDINACIÓN INMEDIATA POR WHATSAPP</span>
             <span class="w-2 h-2 rounded-full bg-[#00f0ff] animate-ping"></span>
           </div>
         </div>
 
         <!-- Products Grid Container -->
-        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
 
       </div>
     </section>
 
     <!-- BIO-MATCHER INTERACTIVO -->
-    <section id="bio-matcher" class="py-24 relative overflow-hidden bg-[#08090c] border-y border-white/5">
+    <section id="bio-matcher" class="py-16 sm:py-24 relative overflow-hidden bg-[#08090c] border-y border-white/5">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-left">
         
-        <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-xs font-mono text-[#ccff00] font-bold uppercase tracking-wider">
+        <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-2 sm:space-y-3">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[10px] sm:text-xs font-mono text-[#ccff00] font-bold uppercase tracking-wider">
             🧬 BIO-ALGORITMO DE EMPAREJAMIENTO
           </div>
-          <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
-            DESCUBRE TU PROTOCOLO <br />
+          <h2 class="text-2xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight">
+            DESCUBRE TU PROTOCOLO <br class="hidden sm:block" />
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-[#85ff7a] to-[#00f0ff]">ACTIVIDAD + SUPLEMENTACIÓN</span>
           </h2>
-          <p class="text-sm sm:text-base text-gray-400">
-            Selecciona tu objetivo prioritario y obtén la combinación sinérgica recomendada por nuestros fisiólogos.
+          <p class="text-xs sm:text-sm text-gray-400">
+            Elige tu objetivo prioritario y obtén la combinación sinérgica recomendada por nuestros preparadores físicos.
           </p>
         </div>
 
-        <!-- Goal Tabs -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-          <button data-bio-goal="goal-strength" class="p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#141722] border-[#ccff00] shadow-[0_0_25px_rgba(204,255,0,0.15)] text-white -translate-y-1">
-            <div class="text-xl mb-2">🏋️‍♂️</div>
-            <h3 class="text-sm font-bold font-display">Aumento de Fuerza & Masa</h3>
+        <!-- Goal Tabs (Grid responsive) -->
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-10">
+          <button data-bio-goal="goal-strength" class="p-3.5 sm:p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#141722] border-[#ccff00] shadow-[0_0_25px_rgba(204,255,0,0.15)] text-white -translate-y-0.5 sm:-translate-y-1">
+            <div class="text-lg sm:text-xl mb-1.5">🏋️‍♂️</div>
+            <h3 class="text-xs sm:text-sm font-bold font-display">Fuerza & Masa Muscular</h3>
           </button>
-          <button data-bio-goal="goal-hyrox" class="p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#0d0f15] border-white/10 text-gray-300 hover:border-white/20">
-            <div class="text-xl mb-2">⚡</div>
-            <h3 class="text-sm font-bold font-display">Resistencia Atlética Hyrox</h3>
+          <button data-bio-goal="goal-hyrox" class="p-3.5 sm:p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#0d0f15] border-white/10 text-gray-300 hover:border-white/20">
+            <div class="text-lg sm:text-xl mb-1.5">⚡</div>
+            <h3 class="text-xs sm:text-sm font-bold font-display">Resistencia Atlética Hyrox</h3>
           </button>
-          <button data-bio-goal="goal-longevity" class="p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#0d0f15] border-white/10 text-gray-300 hover:border-white/20">
-            <div class="text-xl mb-2">🧬</div>
-            <h3 class="text-sm font-bold font-display">Salud & Longevidad Activa</h3>
+          <button data-bio-goal="goal-longevity" class="p-3.5 sm:p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#0d0f15] border-white/10 text-gray-300 hover:border-white/20">
+            <div class="text-lg sm:text-xl mb-1.5">🧬</div>
+            <h3 class="text-xs sm:text-sm font-bold font-display">Salud & Longevidad Activa</h3>
           </button>
-          <button data-bio-goal="goal-fatloss" class="p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#0d0f15] border-white/10 text-gray-300 hover:border-white/20">
-            <div class="text-xl mb-2">🔥</div>
-            <h3 class="text-sm font-bold font-display">Quema Grasa & Tono</h3>
+          <button data-bio-goal="goal-fatloss" class="p-3.5 sm:p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#0d0f15] border-white/10 text-gray-300 hover:border-white/20">
+            <div class="text-lg sm:text-xl mb-1.5">🔥</div>
+            <h3 class="text-xs sm:text-sm font-bold font-display">Quema Grasa & Tono</h3>
           </button>
         </div>
 
         <!-- Strategy Box Container -->
-        <div id="bio-strategy-content" class="rounded-3xl bg-[#0f121a] border border-white/15 p-6 sm:p-10 shadow-2xl"></div>
+        <div id="bio-strategy-content" class="rounded-2xl sm:rounded-3xl bg-[#0f121a] border border-white/15 p-4 sm:p-8 shadow-2xl"></div>
 
       </div>
     </section>
 
-    <!-- PLANES & MEMBRESÍAS -->
-    <section id="planes" class="py-24 relative overflow-hidden bg-[#07080a]">
+    <!-- PLANES & MEMBRESÍAS (VALORES ARGENTINOS REALES Y ACCESIBLES) -->
+    <section id="planes" class="py-16 sm:py-24 relative overflow-hidden bg-[#07080a]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-left">
         
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00f0ff]/10 border border-[#00f0ff]/30 text-xs font-mono text-[#00f0ff] font-bold uppercase tracking-wider">
-            💎 ACCESO TOTAL // SUSCRIPCIONES
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-2 sm:space-y-3">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00f0ff]/10 border border-[#00f0ff]/30 text-[10px] sm:text-xs font-mono text-[#00f0ff] font-bold uppercase tracking-wider">
+            💎 ACCESO TOTAL // VALORES LOCALES
           </div>
-          <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
-            ELIGE TU NIVEL DE <br />
+          <h2 class="text-2xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight">
+            ELIGE TU NIVEL DE <br class="hidden sm:block" />
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#85ff7a] to-[#ccff00]">EVOLUCIÓN FÍSICA</span>
           </h2>
-          <p class="text-sm sm:text-base text-gray-400">
-            Membresías transparentes sin permanencias. Todas activables directamente por WhatsApp.
+          <p class="text-xs sm:text-sm text-gray-400">
+            Valores mensuales transparentes sin matrícula de inscripción ni costos ocultos.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
           
-          <!-- Plan 1 -->
-          <div class="flex flex-col justify-between rounded-3xl p-8 bg-[#0d0f15] border border-white/10 hover:border-white/20 transition-all">
-            <div class="space-y-6">
-              <span class="px-3 py-1 rounded-full text-[10px] font-mono font-extrabold uppercase bg-white/10 text-gray-300">SIN COMPROMISO</span>
+          <!-- Plan 1: Pase Diario -->
+          <div class="flex flex-col justify-between rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#0d0f15] border border-white/10 hover:border-white/20 transition-all">
+            <div class="space-y-4 sm:space-y-5">
+              <span class="inline-block px-3 py-1 rounded-full text-[10px] font-mono font-extrabold uppercase bg-white/10 text-gray-300">SIN MATRÍCULA</span>
               <div>
-                <h3 class="text-2xl font-display font-extrabold text-white">PASS EXPERIENCIA</h3>
-                <p class="text-xs text-gray-400 mt-1">Para descubrir el ecosistema</p>
+                <h3 class="text-xl sm:text-2xl font-display font-extrabold text-white">PASE DIARIO</h3>
+                <p class="text-xs text-gray-400 mt-0.5">Para entrenar 1 día y probar las instalaciones</p>
               </div>
               <div class="flex items-baseline gap-1">
-                <span class="text-5xl font-mono font-extrabold text-white">$15</span>
-                <span class="text-xs font-mono text-gray-400">/ Pase diario único</span>
+                <span class="text-3xl sm:text-4xl lg:text-5xl font-mono font-extrabold text-white">$6.500</span>
+                <span class="text-xs font-mono text-gray-400">/ día único</span>
               </div>
-              <ul class="space-y-3 border-t border-white/10 pt-6 text-xs text-gray-300">
-                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Acceso de día completo a sala biomecánica</li>
-                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> 1 clase grupal guiada a elección</li>
-                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Vestuarios con amenities premium</li>
-                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Bebida isotónica de bienvenida</li>
+              <ul class="space-y-2.5 border-t border-white/10 pt-5 text-xs text-gray-300">
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Acceso de día completo a sala de pesas</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> 1 clase grupal guiada (Hyrox, Flow o Boxing)</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Vestuarios y duchas con amenities</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Bebida isotónica de cortesía</li>
               </ul>
             </div>
-            <button onclick="sendMembershipWhatsApp('pass-day')" class="w-full mt-8 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-mono text-xs font-bold border border-white/10 transition-colors">
-              Pedir Pase por WhatsApp 💬
+            <button onclick="sendMembershipWhatsApp('pass-day')" class="w-full mt-6 py-3.5 rounded-xl sm:rounded-2xl bg-white/10 hover:bg-white/20 text-white font-mono text-xs font-bold border border-white/10 transition-colors">
+              Pedir Pase Diario por WhatsApp 💬
             </button>
           </div>
 
-          <!-- Plan 2 (Popular) -->
-          <div class="flex flex-col justify-between rounded-3xl p-8 bg-gradient-to-b from-[#141826] to-[#0e1017] border-2 border-[#ccff00] shadow-[0_0_35px_rgba(204,255,0,0.18)] lg:-translate-y-3 transition-all">
-            <div class="space-y-6">
+          <!-- Plan 2: Pro Mensual (Más Popular) -->
+          <div class="flex flex-col justify-between rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-[#141826] to-[#0e1017] border-2 border-[#ccff00] shadow-[0_0_35px_rgba(204,255,0,0.18)] lg:-translate-y-2.5 transition-all">
+            <div class="space-y-4 sm:space-y-5">
               <div class="flex justify-between items-center">
-                <span class="px-3 py-1 rounded-full text-[10px] font-mono font-extrabold uppercase bg-[#ccff00] text-black">MÁS POPULAR</span>
+                <span class="px-3 py-1 rounded-full text-[10px] font-mono font-extrabold uppercase bg-[#ccff00] text-black">MÁS ELEGIDO</span>
                 <span class="text-[11px] font-mono text-[#ccff00] font-bold">✨ RECOMENDADO</span>
               </div>
               <div>
-                <h3 class="text-2xl font-display font-extrabold text-white">KINETIC PRO</h3>
-                <p class="text-xs text-gray-400 mt-1">El estándar para atletas comprometidos</p>
+                <h3 class="text-xl sm:text-2xl font-display font-extrabold text-white">KINETIC PRO</h3>
+                <p class="text-xs text-gray-400 mt-0.5">El pase mensual integral para atletas y entusiastas</p>
               </div>
               <div class="flex items-baseline gap-1">
-                <span class="text-5xl font-mono font-extrabold text-white">$65</span>
+                <span class="text-3xl sm:text-4xl lg:text-5xl font-mono font-extrabold text-white">$36.000</span>
                 <span class="text-xs font-mono text-gray-400">/ mes</span>
               </div>
-              <ul class="space-y-3 border-t border-white/10 pt-6 text-xs text-gray-300">
-                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Acceso ilimitado 7 días a la semana</li>
-                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Todas las actividades y clases grupales</li>
-                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Monitoreo cardíaco en pantallas</li>
-                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Locker permanente y toallas ilimitadas</li>
-                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> App de registro de marcas y cargas</li>
-                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> 1 sesión de Cryo & Contrast Lab mensual</li>
+              <ul class="space-y-2.5 border-t border-white/10 pt-5 text-xs text-gray-300">
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Acceso ilimitado de lunes a domingos</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Todas las actividades grupales incluidas</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Monitoreo cardíaco en pantallas en clases HIIT</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Locker permanente y toallas limpias</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> App de seguimiento de cargas y marcas</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> 1 sesión de Cryo & Contrast Lab incluida al mes</li>
               </ul>
             </div>
-            <button onclick="sendMembershipWhatsApp('plan-pro')" class="w-full mt-8 py-4 rounded-2xl bg-[#ccff00] hover:bg-[#b8e600] text-black font-mono font-extrabold text-sm shadow-[0_0_20px_rgba(204,255,0,0.35)] transition-all hover:scale-[1.02]">
-              Suscribirme por WhatsApp 💬
+            <button onclick="sendMembershipWhatsApp('plan-pro')" class="w-full mt-6 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-[#ccff00] hover:bg-[#b8e600] text-black font-mono font-extrabold text-xs sm:text-sm shadow-[0_0_20px_rgba(204,255,0,0.35)] transition-all active:scale-95">
+              Suscribirme al Plan Pro por WhatsApp 💬
             </button>
           </div>
 
-          <!-- Plan 3 -->
-          <div class="flex flex-col justify-between rounded-3xl p-8 bg-[#0d0f15] border border-white/10 hover:border-white/20 transition-all">
-            <div class="space-y-6">
-              <span class="px-3 py-1 rounded-full text-[10px] font-mono font-extrabold uppercase bg-white/10 text-gray-300">EXPERIENCIA TOTAL</span>
+          <!-- Plan 3: Elite Biohacker -->
+          <div class="flex flex-col justify-between rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#0d0f15] border border-white/10 hover:border-white/20 transition-all">
+            <div class="space-y-4 sm:space-y-5">
+              <span class="inline-block px-3 py-1 rounded-full text-[10px] font-mono font-extrabold uppercase bg-white/10 text-gray-300">BIOHACKING TOTAL</span>
               <div>
-                <h3 class="text-2xl font-display font-extrabold text-white">ELITE BIOHACKER</h3>
-                <p class="text-xs text-gray-400 mt-1">Optimización biológica integral</p>
+                <h3 class="text-xl sm:text-2xl font-display font-extrabold text-white">ELITE BIOHACKER</h3>
+                <p class="text-xs text-gray-400 mt-0.5">Optimización biológica y física integral</p>
               </div>
               <div class="flex items-baseline gap-1">
-                <span class="text-5xl font-mono font-extrabold text-white">$115</span>
+                <span class="text-3xl sm:text-4xl lg:text-5xl font-mono font-extrabold text-white">$54.000</span>
                 <span class="text-xs font-mono text-gray-400">/ mes</span>
               </div>
-              <ul class="space-y-3 border-t border-white/10 pt-6 text-xs text-gray-300">
+              <ul class="space-y-2.5 border-t border-white/10 pt-5 text-xs text-gray-300">
                 <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Todo lo incluido en KINETIC PRO</li>
                 <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Cryo & Contrast Lab ILIMITADO (Hielo + Sauna)</li>
-                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> 15% de descuento permanente en suplementos</li>
-                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Evaluación mensual de bioimpedancia InBody</li>
-                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Plan nutricional personalizado y suplementación</li>
-                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> 2 pases de invitado al mes</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> 15% de descuento permanente en la tienda</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Evaluación mensual de bioimpedancia y composición</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Plan nutricional y asesoría de suplementos</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> 2 pases de invitado por mes para amigos</li>
               </ul>
             </div>
-            <button onclick="sendMembershipWhatsApp('plan-elite')" class="w-full mt-8 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-mono text-xs font-bold border border-white/10 transition-colors">
-              Solicitar Pase Elite por WhatsApp 💬
+            <button onclick="sendMembershipWhatsApp('plan-elite')" class="w-full mt-6 py-3.5 rounded-xl sm:rounded-2xl bg-white/10 hover:bg-white/20 text-white font-mono text-xs font-bold border border-white/10 transition-colors">
+              Pedir Membresía Elite por WhatsApp 💬
             </button>
           </div>
 
@@ -561,21 +595,21 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="relative bg-[#050608] border-t border-white/10 pt-16 pb-12 overflow-hidden text-left">
+    <footer class="relative bg-[#050608] border-t border-white/10 pt-12 sm:pt-16 pb-12 overflow-hidden text-left">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pb-10 border-b border-white/10">
           
-          <div class="space-y-4">
-            <span class="font-display font-black text-2xl tracking-tight text-white flex items-center gap-2">
+          <div class="space-y-3 sm:space-y-4">
+            <span class="font-display font-black text-xl sm:text-2xl tracking-tight text-white flex items-center gap-2">
               ⚡ KINETIC <span class="text-[#ccff00] font-mono">//LAB</span>
             </span>
             <p class="text-xs text-gray-400 max-w-sm leading-relaxed">
-              Donde la ciencia biomédica, el alto rendimiento biomecánico y la nutrición pura convergen. Pedidos y reservas inmediatas por WhatsApp.
+              Donde la ciencia biomédica, el alto rendimiento y la nutrición pura convergen. Consultas y pedidos directos por WhatsApp.
             </p>
-            <div class="flex items-center gap-3 pt-1">
-              <button onclick="sendDirectWhatsApp()" class="px-4 py-2 rounded-xl bg-[#25D366] text-black font-mono font-extrabold text-xs tracking-wider">
-                CHAT WHATSAPP 💬
+            <div class="flex items-center gap-2.5 pt-1">
+              <button onclick="sendDirectWhatsApp()" class="px-3.5 py-2 rounded-xl bg-[#25D366] text-black font-mono font-extrabold text-xs tracking-wider">
+                WHATSAPP DIRECTO 💬
               </button>
               <button onclick="openSettingsModal()" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 text-xs border border-white/10">
                 ⚙️ Ajustes
@@ -583,39 +617,39 @@
             </div>
           </div>
 
-          <div class="space-y-3">
+          <div class="space-y-2.5">
             <h4 class="text-xs font-mono uppercase tracking-widest text-[#ccff00] font-bold">SEDE & HORARIOS</h4>
-            <div class="space-y-1.5 text-xs text-gray-300">
-              <p>📍 Av. de la Innovación 45, Distrito Deportivo</p>
+            <div class="space-y-1 text-xs text-gray-300">
+              <p>📍 Humboldt 1980, Palermo Hollywood, CABA</p>
               <p>🕒 Lun - Vie: 06:00 - 23:00</p>
               <p>🕒 Sáb - Dom: 08:00 - 20:00</p>
-              <p>📱 WhatsApp: <span id="footer-whatsapp-display" class="font-mono text-[#ccff00]">+34600123456</span></p>
+              <p>📱 WhatsApp: <span id="footer-whatsapp-display" class="font-mono text-[#ccff00]">+54 9 11 2345-6789</span></p>
             </div>
           </div>
 
-          <div class="space-y-3">
-            <h4 class="text-xs font-mono uppercase tracking-widest text-[#00f0ff] font-bold">SECCIONES</h4>
-            <ul class="space-y-1.5 text-xs font-mono text-gray-400">
+          <div class="space-y-2.5">
+            <h4 class="text-xs font-mono uppercase tracking-widest text-[#00f0ff] font-bold">NAVEGACIÓN</h4>
+            <ul class="space-y-1 text-xs font-mono text-gray-400">
               <li><a href="#actividades" class="hover:text-white">→ Clases & Hyrox Protocol</a></li>
               <li><a href="#novedades" class="hover:text-white">→ Radar de Novedades</a></li>
-              <li><a href="#tienda" class="hover:text-white">→ Suplementación Creapure®</a></li>
+              <li><a href="#tienda" class="hover:text-white">→ Tienda de Suplementación</a></li>
               <li><a href="#bio-matcher" class="hover:text-white">→ Bio-Matcher Interactivo</a></li>
-              <li><a href="#planes" class="hover:text-white">→ Membresías y Pases</a></li>
+              <li><a href="#planes" class="hover:text-white">→ Membresías y Planes ARS</a></li>
             </ul>
           </div>
 
-          <div class="space-y-3">
+          <div class="space-y-2.5">
             <h4 class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">GARANTÍA TOTAL</h4>
             <p class="text-xs text-gray-400 leading-relaxed">
-              Entrenadores certificados, control biomecánico individual y suplementación libre de aditivos sintéticos.
+              Atención personalizada, entrenadores titulados y suplementación de máxima calidad farmacéutica sin rellenos.
             </p>
           </div>
 
         </div>
 
-        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-gray-500">
-          <div>© 2026 KINETIC LAB. Despliegue estático autónomo para GitHub Pages.</div>
-          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="hover:text-white">
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-gray-500 text-center sm:text-left">
+          <div>© 2026 KINETIC LAB • Buenos Aires, Argentina. Despliegue estático para GitHub Pages.</div>
+          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="hover:text-white py-1">
             Volver Arriba ↑
           </button>
         </div>
@@ -623,61 +657,61 @@
       </div>
     </footer>
 
-    <!-- MODAL: RESERVA DE ACTIVIDAD -->
-    <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden">
-      <div class="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#0e1017] border border-white/15 shadow-2xl text-left">
-        <div class="relative h-44 sm:h-52 w-full overflow-hidden">
+    <!-- MODAL: RESERVA DE ACTIVIDAD (ADAPTABLE A PANTALLAS MÓVILES) -->
+    <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md hidden">
+      <div class="relative w-full max-w-lg max-h-[92vh] overflow-y-auto rounded-2xl sm:rounded-3xl bg-[#0e1017] border border-white/15 shadow-2xl text-left">
+        <div class="relative h-40 sm:h-48 w-full overflow-hidden shrink-0">
           <img id="booking-modal-img" src="" alt="Actividad" class="w-full h-full object-cover" />
           <div class="absolute inset-0 bg-gradient-to-t from-[#0e1017] via-black/40 to-transparent"></div>
-          <button onclick="closeBookingModal()" class="absolute top-4 right-4 p-2 rounded-full bg-black/60 text-white font-bold">✕</button>
-          <div class="absolute bottom-4 left-6 flex items-center gap-2">
-            <span id="booking-modal-spots" class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-bold"></span>
+          <button onclick="closeBookingModal()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/70 text-white font-bold flex items-center justify-center border border-white/10">✕</button>
+          <div class="absolute bottom-3 left-4 flex items-center gap-2">
+            <span id="booking-modal-spots" class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-bold"></span>
           </div>
         </div>
 
-        <div class="p-6 sm:p-8 space-y-6">
+        <div class="p-4 sm:p-6 space-y-4">
           <div>
-            <h2 id="booking-modal-title" class="text-2xl sm:text-3xl font-display font-extrabold text-white"></h2>
-            <p id="booking-modal-coach" class="text-xs sm:text-sm text-gray-400 mt-1"></p>
+            <h2 id="booking-modal-title" class="text-xl sm:text-2xl font-display font-extrabold text-white"></h2>
+            <p id="booking-modal-coach" class="text-xs text-gray-400 mt-0.5"></p>
           </div>
 
-          <div class="grid grid-cols-2 gap-2 p-3 rounded-xl bg-white/[0.03] border border-white/5 text-center text-xs font-mono">
+          <div class="grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-white/[0.03] border border-white/5 text-center text-xs font-mono">
             <div><span class="text-gray-400">DURACIÓN:</span> <strong id="booking-modal-duration" class="text-white"></strong></div>
             <div><span class="text-gray-400">CALORÍAS:</span> <strong id="booking-modal-calories" class="text-[#ccff00]"></strong></div>
           </div>
 
-          <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+          <form onsubmit="handleBookingSubmit(event)" class="space-y-3.5">
             <div>
-              <label class="block text-xs font-mono uppercase tracking-wider text-gray-300 mb-2 font-bold">1. Selecciona Turno:</label>
-              <div id="booking-modal-slots" class="grid grid-cols-1 sm:grid-cols-2 gap-2"></div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-gray-300 mb-1.5 font-bold">1. Selecciona Turno:</label>
+              <div id="booking-modal-slots" class="grid grid-cols-1 gap-2"></div>
             </div>
 
             <div>
-              <label class="block text-xs font-mono uppercase tracking-wider text-gray-300 mb-2 font-bold">2. Tipo de Inscripción:</label>
+              <label class="block text-xs font-mono uppercase tracking-wider text-gray-300 mb-1.5 font-bold">2. Tipo de Pase:</label>
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                <label class="p-2.5 rounded-xl border border-white/10 bg-black/40 text-gray-300 flex items-center gap-2 cursor-pointer">
-                  <input type="radio" name="booking-pass-type" value="Clase de Prueba Gratuita" checked class="accent-[#ccff00]" />
-                  <span>Clase de Prueba Gratis</span>
+                <label class="p-2 rounded-xl border border-white/10 bg-black/40 text-gray-300 flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="booking-pass-type" value="Clase de Prueba Gratuita (1er Día)" checked class="accent-[#ccff00]" />
+                  <span>Prueba Gratis</span>
                 </label>
-                <label class="p-2.5 rounded-xl border border-white/10 bg-black/40 text-gray-300 flex items-center gap-2 cursor-pointer">
-                  <input type="radio" name="booking-pass-type" value="Sesión Suelta ($18)" class="accent-[#ccff00]" />
-                  <span>Sesión Suelta ($18)</span>
+                <label class="p-2 rounded-xl border border-white/10 bg-black/40 text-gray-300 flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="booking-pass-type" value="Sesión Suelta ($6.500)" class="accent-[#ccff00]" />
+                  <span>Pase Suelto ($6.500)</span>
                 </label>
-                <label class="p-2.5 rounded-xl border border-white/10 bg-black/40 text-gray-300 flex items-center gap-2 cursor-pointer">
-                  <input type="radio" name="booking-pass-type" value="Membresía Mensual" class="accent-[#ccff00]" />
+                <label class="p-2 rounded-xl border border-white/10 bg-black/40 text-gray-300 flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="booking-pass-type" value="Plan Mensual Pro" class="accent-[#ccff00]" />
                   <span>Membresía Mensual</span>
                 </label>
               </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               <div>
-                <label class="block text-xs font-mono text-gray-400 mb-1">Nombre Completo *</label>
-                <input id="booking-name" type="text" required placeholder="Ej. Lucas Rossi" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs" />
+                <label class="block text-xs font-mono text-gray-400 mb-1">Nombre y Apellido *</label>
+                <input id="booking-name" type="text" required placeholder="Ej. Lucas Rossi" class="w-full px-3 py-2.5 rounded-xl bg-black/60 border border-white/15 text-white text-sm" />
               </div>
               <div>
                 <label class="block text-xs font-mono text-gray-400 mb-1">Tu Teléfono / WhatsApp *</label>
-                <input id="booking-phone" type="tel" required placeholder="Ej. +34 612 345 678" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs" />
+                <input id="booking-phone" type="tel" required placeholder="Ej. 11 2345-6789" class="w-full px-3 py-2.5 rounded-xl bg-black/60 border border-white/15 text-white text-sm" />
               </div>
             </div>
 
@@ -686,8 +720,8 @@
               <textarea id="booking-notes" rows="2" placeholder="Ej. Es mi primera vez entrenando..." class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs resize-none"></textarea>
             </div>
 
-            <button type="submit" class="w-full py-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold text-sm font-mono tracking-wider shadow-[0_0_20px_rgba(37,211,102,0.35)] transition-all">
-              CONFIRMAR Y ENVIAR RESERVA POR WHATSAPP 💬
+            <button type="submit" class="w-full py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold text-xs sm:text-sm font-mono tracking-wider shadow-[0_0_20px_rgba(37,211,102,0.35)] transition-all">
+              CONFIRMAR RESERVA POR WHATSAPP 💬
             </button>
           </form>
         </div>
@@ -695,55 +729,56 @@
     </div>
 
     <!-- MODAL: DETALLE DE NOVEDAD -->
-    <div id="news-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden">
-      <div class="relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-3xl bg-[#0e1017] border border-white/15 shadow-2xl text-left">
-        <div class="relative h-56 w-full overflow-hidden">
+    <div id="news-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md hidden">
+      <div class="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl sm:rounded-3xl bg-[#0e1017] border border-white/15 shadow-2xl text-left">
+        <div class="relative h-48 sm:h-56 w-full overflow-hidden shrink-0">
           <img id="news-modal-img" src="" alt="Novedad" class="w-full h-full object-cover" />
           <div class="absolute inset-0 bg-gradient-to-t from-[#0e1017] via-transparent to-transparent"></div>
-          <button onclick="closeNewsModal()" class="absolute top-4 right-4 p-2 rounded-full bg-black/60 text-white font-bold">✕</button>
-          <div class="absolute bottom-4 left-6 flex gap-2">
-            <span id="news-modal-tag" class="px-3 py-1 rounded-full bg-[#ccff00] text-black font-mono font-bold text-xs uppercase"></span>
-            <span id="news-modal-date" class="px-3 py-1 rounded-full bg-black/60 text-gray-300 font-mono text-xs border border-white/10"></span>
+          <button onclick="closeNewsModal()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/70 text-white font-bold flex items-center justify-center border border-white/10">✕</button>
+          <div class="absolute bottom-3 left-4 flex gap-2">
+            <span id="news-modal-tag" class="px-2.5 py-0.5 rounded-full bg-[#ccff00] text-black font-mono font-bold text-[10px] uppercase"></span>
+            <span id="news-modal-date" class="px-2.5 py-0.5 rounded-full bg-black/60 text-gray-300 font-mono text-[10px] border border-white/10"></span>
           </div>
         </div>
 
-        <div class="p-6 sm:p-8 space-y-4">
-          <h2 id="news-modal-title" class="text-2xl font-display font-extrabold text-white"></h2>
-          <p id="news-modal-content" class="text-sm text-gray-300 leading-relaxed"></p>
-          <div class="pt-4 flex gap-3">
+        <div class="p-4 sm:p-6 space-y-3.5">
+          <h2 id="news-modal-title" class="text-xl sm:text-2xl font-display font-extrabold text-white"></h2>
+          <p id="news-modal-content" class="text-xs sm:text-sm text-gray-300 leading-relaxed"></p>
+          <div class="pt-3 flex gap-2.5">
             <button onclick="sendNewsWhatsApp(state.selectedNews ? state.selectedNews.id : '')" class="flex-1 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-black font-bold font-mono text-xs">
-              Consultar sobre esto por WhatsApp 💬
+              Consultar por WhatsApp 💬
             </button>
-            <button onclick="closeNewsModal()" class="px-4 py-3 rounded-xl bg-white/10 text-gray-300 text-xs">Cerrar</button>
+            <button onclick="closeNewsModal()" class="px-4 py-3 rounded-xl bg-white/10 text-gray-300 text-xs font-mono">Cerrar</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE-OVER: CARRITO DE COMPRAS -->
+    <!-- SLIDE-OVER: CARRITO DE COMPRAS (ADAPTADO 100% A CELULAR) -->
     <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden bg-black/80 backdrop-blur-sm hidden">
-      <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div class="w-screen max-w-md bg-[#0d0f15] border-l border-white/10 shadow-2xl flex flex-col justify-between text-left">
+      <div class="absolute inset-y-0 right-0 max-w-full flex">
+        <div class="w-screen sm:max-w-md bg-[#0d0f15] border-l border-white/10 shadow-2xl flex flex-col justify-between text-left">
           
-          <div class="p-5 border-b border-white/10 flex items-center justify-between bg-[#11141d]">
-            <h3 class="text-base font-bold font-display text-white flex items-center gap-2">
+          <!-- Cart Header -->
+          <div class="p-4 border-b border-white/10 flex items-center justify-between bg-[#11141d]">
+            <h3 class="text-sm sm:text-base font-bold font-display text-white flex items-center gap-2">
               <span>🛒</span> Tu Carrito de Suplementos
             </h3>
-            <button onclick="closeCartDrawer()" class="p-2 rounded-xl bg-white/5 text-gray-400 hover:text-white">✕</button>
+            <button onclick="closeCartDrawer()" class="w-8 h-8 rounded-xl bg-white/5 text-gray-400 hover:text-white flex items-center justify-center">✕</button>
           </div>
 
           <!-- Items list -->
-          <div class="flex-1 overflow-y-auto p-5 space-y-4">
-            <div id="cart-empty-state" class="h-full flex flex-col items-center justify-center text-center p-8 space-y-3">
+          <div class="flex-1 overflow-y-auto p-4 space-y-3.5">
+            <div id="cart-empty-state" class="h-full flex flex-col items-center justify-center text-center p-6 space-y-3">
               <span class="text-4xl text-gray-500">🛒</span>
               <h4 class="text-white font-bold text-base">Tu carrito está vacío</h4>
-              <p class="text-xs text-gray-400">Agrega suplementos de la tienda para realizar tu pedido directo por WhatsApp.</p>
+              <p class="text-xs text-gray-400">Agrega suplementos para coordinar tu pedido y medios de pago por WhatsApp.</p>
             </div>
 
-            <div id="cart-items-container" class="space-y-3"></div>
+            <div id="cart-items-container" class="space-y-2.5"></div>
 
-            <div id="cart-checkout-section" class="space-y-4 hidden pt-2">
-              <!-- Coupon -->
+            <div id="cart-checkout-section" class="space-y-3.5 hidden pt-2">
+              <!-- Coupon Form -->
               <form id="coupon-form" class="flex gap-2">
                 <input id="coupon-input" type="text" placeholder="Cupón (ej. KINETIC10)" class="flex-1 px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-xs text-white uppercase font-mono" />
                 <button type="submit" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-mono font-bold text-white">APLICAR</button>
@@ -755,46 +790,46 @@
                 <div class="grid grid-cols-2 gap-2">
                   <button data-delivery-method="pickup" class="p-2.5 rounded-xl border border-[#ccff00] bg-[#ccff00]/10 text-white font-bold text-xs text-left">
                     🏬 Retiro en Gym
-                    <span class="text-[10px] text-gray-400 block font-normal">Recepción (Gratis)</span>
+                    <span class="text-[10px] text-gray-400 block font-normal">Palermo (Gratis)</span>
                   </button>
                   <button data-delivery-method="delivery" class="p-2.5 rounded-xl border border-white/10 bg-black/40 text-gray-400 text-xs text-left">
-                    🚚 A Domicilio
-                    <span class="text-[10px] text-gray-400 block font-normal">Envío express</span>
+                    🚚 Moto Express
+                    <span class="text-[10px] text-gray-400 block font-normal">CABA y GBA</span>
                   </button>
                 </div>
               </div>
 
               <!-- Customer Form -->
               <div class="space-y-2 pt-2 border-t border-white/10">
-                <input id="cart-name" type="text" required placeholder="Tu Nombre completo *" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-xs text-white" />
-                <input id="cart-phone" type="tel" required placeholder="Tu Teléfono de WhatsApp *" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-xs text-white" />
+                <input id="cart-name" type="text" required placeholder="Tu Nombre completo *" class="w-full px-3 py-2.5 rounded-xl bg-black/60 border border-white/15 text-sm text-white" />
+                <input id="cart-phone" type="tel" required placeholder="Tu Teléfono de WhatsApp *" class="w-full px-3 py-2.5 rounded-xl bg-black/60 border border-white/15 text-sm text-white" />
                 <div id="cart-address-wrapper" class="hidden">
-                  <input id="cart-address" type="text" placeholder="Dirección completa de entrega *" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-[#00f0ff]/40 text-xs text-white" />
+                  <input id="cart-address" type="text" placeholder="Dirección en CABA/GBA *" class="w-full px-3 py-2.5 rounded-xl bg-black/60 border border-[#00f0ff]/40 text-sm text-white" />
                 </div>
-                <input id="cart-notes" type="text" placeholder="Notas (Sabor preferido, etc.)" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-xs text-white" />
+                <input id="cart-notes" type="text" placeholder="Notas (Ej: Sabor cacao, abono por Mercado Pago)" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-xs text-white" />
               </div>
             </div>
           </div>
 
           <!-- Checkout actions -->
-          <div class="p-5 border-t border-white/10 bg-[#11141d] space-y-3">
+          <div class="p-4 border-t border-white/10 bg-[#11141d] space-y-3">
             <div class="space-y-1 text-xs font-mono">
               <div class="flex justify-between text-gray-400">
                 <span>Subtotal:</span>
-                <span id="cart-subtotal">$0.00</span>
+                <span id="cart-subtotal">$0</span>
               </div>
               <div id="cart-discount-row" class="flex justify-between text-[#ccff00] hidden">
                 <span>Descuento:</span>
-                <span id="cart-discount-amount">-$0.00</span>
+                <span id="cart-discount-amount">-$0</span>
               </div>
-              <div class="flex justify-between text-sm font-bold text-white pt-1 border-t border-white/10">
+              <div class="flex justify-between text-sm sm:text-base font-bold text-white pt-1 border-t border-white/10">
                 <span>TOTAL ESTIMADO:</span>
-                <span id="cart-total" class="text-[#ccff00] font-mono text-base">$0.00</span>
+                <span id="cart-total" class="text-[#ccff00] font-mono text-base sm:text-lg">$0</span>
               </div>
             </div>
 
-            <button onclick="handleCartCheckout(event)" class="w-full py-4 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold text-sm font-mono tracking-wider shadow-[0_0_20px_rgba(37,211,102,0.35)] transition-all">
-              FINALIZAR PEDIDO POR WHATSAPP 💬
+            <button onclick="handleCartCheckout(event)" class="w-full py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold text-xs sm:text-sm font-mono tracking-wider shadow-[0_0_20px_rgba(37,211,102,0.35)] transition-all">
+              PEDIR POR WHATSAPP 💬
             </button>
           </div>
 
@@ -803,48 +838,53 @@
     </div>
 
     <!-- MODAL: AJUSTES DE WHATSAPP -->
-    <div id="settings-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden">
-      <div class="relative w-full max-w-md p-6 rounded-3xl bg-[#0e1017] border border-white/15 shadow-2xl text-left">
-        <button onclick="closeSettingsModal()" class="absolute top-4 right-4 p-2 rounded-full bg-white/5 text-gray-400 hover:text-white">✕</button>
-        <h3 class="text-xl font-bold font-display text-white mb-2">⚙️ Vinculación WhatsApp</h3>
-        <p class="text-xs text-gray-300 mb-4 leading-relaxed">
-          Todos los pedidos de la tienda y reservas se transfieren a este número de teléfono con mensajes formateados automáticamente.
+    <div id="settings-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md hidden">
+      <div class="relative w-full max-w-sm p-5 rounded-2xl bg-[#0e1017] border border-white/15 shadow-2xl text-left">
+        <button onclick="closeSettingsModal()" class="absolute top-3.5 right-3.5 w-7 h-7 rounded-full bg-white/5 text-gray-400 hover:text-white flex items-center justify-center">✕</button>
+        <h3 class="text-base font-bold font-display text-white mb-1.5">⚙️ WhatsApp de Pedidos</h3>
+        <p class="text-xs text-gray-300 mb-3 leading-relaxed">
+          Ingresa el teléfono receptor (con código de país, ej: Argentina 54911...). Todos los pedidos y reservas se vincularán a este número.
         </p>
 
-        <form onsubmit="saveWhatsAppSettings(event)" class="space-y-4">
+        <form onsubmit="saveWhatsAppSettings(event)" class="space-y-3">
           <div>
-            <label class="block text-xs font-mono uppercase text-gray-400 mb-1">Número (Con código país, sin '+' ni espacios):</label>
-            <input id="settings-phone-input" type="text" required class="w-full px-3 py-2.5 rounded-xl bg-black/60 border border-white/15 text-white font-mono text-sm" placeholder="Ej. 34600123456 o 54911..." />
+            <label class="block text-[11px] font-mono uppercase text-gray-400 mb-1">Número receptor:</label>
+            <input id="settings-phone-input" type="text" required class="w-full px-3 py-2.5 rounded-xl bg-black/60 border border-white/15 text-white font-mono text-sm" placeholder="Ej. 5491123456789" />
           </div>
-          <div class="flex gap-2">
-            <button type="button" onclick="sendDirectWhatsApp('Hola! Test de vinculación de WhatsApp.')" class="flex-1 py-2.5 rounded-xl bg-white/10 text-xs font-mono text-white">Probar Test</button>
-            <button type="submit" class="px-5 py-2.5 rounded-xl bg-[#ccff00] text-black font-bold text-xs font-mono">Guardar</button>
+          <div class="flex gap-2 pt-1">
+            <button type="button" onclick="sendDirectWhatsApp('Hola! Test de vinculación de WhatsApp.')" class="flex-1 py-2 rounded-xl bg-white/10 text-xs font-mono text-white">Probar Test</button>
+            <button type="submit" class="px-4 py-2 rounded-xl bg-[#ccff00] text-black font-bold text-xs font-mono">Guardar</button>
           </div>
         </form>
       </div>
     </div>
 
     <!-- TOAST CONTAINER -->
-    <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2 pointer-events-none max-w-sm w-full"></div>
+    <div id="toast-container" class="fixed bottom-5 right-5 left-5 sm:left-auto z-50 space-y-2 pointer-events-none max-w-sm"></div>
 
     <!-- FLOATING WHATSAPP LAUNCHER -->
-    <div class="fixed bottom-6 left-6 z-40">
-      <button onclick="sendDirectWhatsApp()" class="flex items-center gap-2 p-3 sm:px-4 sm:py-3 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-black font-mono font-bold text-xs tracking-wider shadow-[0_0_25px_rgba(37,211,102,0.45)] transition-all hover:scale-105 active:scale-95">
-        <span class="text-lg">💬</span>
-        <span class="hidden sm:inline">¿Hablamos por WhatsApp?</span>
+    <div class="fixed bottom-5 left-4 z-40">
+      <button onclick="sendDirectWhatsApp()" class="flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-black font-mono font-bold text-xs tracking-wider shadow-[0_0_20px_rgba(37,211,102,0.45)] transition-all hover:scale-105 active:scale-95">
+        <span class="text-base sm:text-lg">💬</span>
+        <span class="hidden xs:inline sm:inline">WhatsApp</span>
       </button>
     </div>
 
-    <!-- CORE AUTOCONTENIDO JAVASCRIPT -->
+    <!-- JAVASCRIPT CON VALORES COHERENTES A ARGENTINA Y FORMATEO ARS -->
     <script>
-      // 1. DATA SOURCE
+      // Formateador de moneda en pesos argentinos ($32.000)
+      function formatARS(val) {
+        return "$" + Math.round(val).toLocaleString("es-AR");
+      }
+
+      // 1. DATA SOURCE (ARGENTINA)
       const GYM_DATA = {
         config: {
           name: "KINETIC LAB",
-          defaultPhone: "34600123456",
-          address: "Av. de la Innovación 45, Distrito Deportivo",
+          defaultPhone: "5491123456789", // Formato Argentina móvil (54 9 11 ...)
+          address: "Humboldt 1980, Palermo Hollywood, CABA",
           schedule: "Lun - Vie: 06:00 - 23:00 | Sáb - Dom: 08:00 - 20:00",
-          capacity: 64
+          capacity: 58
         },
 
         activities: [
@@ -856,18 +896,18 @@
             intensity: 5,
             duration: "60 min",
             calories: "750 - 950 kcal",
-            coach: "Elena 'Valkyrie' Vega",
-            coachRole: "Head Coach Hyrox & Master Trainer",
+            coach: "Elena Vega",
+            coachRole: "Head Coach Hyrox Argentina",
             spotsLeft: 3,
             image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80",
-            desc: "Entrenamiento funcional de alta densidad para pruebas atléticas. Sled push, SkiErg, Wall Balls, zancadas y carreras por intervalos.",
+            desc: "Preparación funcional para pruebas atléticas. Sled push, SkiErg, Wall Balls, zancadas ponderadas y carreras fraccionadas.",
             benefits: ["Potencia aeróbica y anaeróbica", "Resistencia muscular extrema", "Tácticas de ritmo y competición"],
             slots: [
               "Lunes y Miércoles 07:00 - 08:00",
               "Lunes y Miércoles 19:00 - 20:00",
               "Sábados Especial 10:30 - 12:00"
             ],
-            priceBadge: "Incluido en Membresía o Pase $18"
+            priceBadge: "Incluido en Plan Pro o Pase $6.500"
           },
           {
             id: "bio-contrast",
@@ -881,14 +921,14 @@
             coachRole: "Fisiólogo & Especialista en Longevidad",
             spotsLeft: 2,
             image: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=800&q=80",
-            desc: "Inmersión en tinas de hielo a 3°C alternadas con sauna finlandés de infrarrojo lejano a 85°C para acelerar la desinflamación y la regeneración celular.",
+            desc: "Inmersión en tinas de hielo a 3°C alternadas con sauna finlandés de infrarrojo lejano a 85°C. Desinflamación celular total.",
             benefits: ["Regeneración del sistema nervioso", "Reducción radical de cortisol", "Pico de dopamina (+250%)"],
             slots: [
               "Lunes a Viernes 08:00 - 08:45",
               "Lunes a Viernes 14:00 - 14:45",
               "Lunes a Viernes 20:30 - 21:15"
             ],
-            priceBadge: "Gratis en Plan Elite o $20"
+            priceBadge: "Gratis en Plan Elite o $8.000"
           },
           {
             id: "power-sculpt",
@@ -898,18 +938,18 @@
             intensity: 4,
             duration: "55 min",
             calories: "500 - 650 kcal",
-            coach: "Carlos 'Titan' Durán",
-            coachRole: "Especialista en Biomecánica",
+            coach: "Carlos Durán",
+            coachRole: "Biomecánica y Powerbuilding",
             spotsLeft: 4,
             image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
-            desc: "Desarrollo muscular inteligente guiado por ángulos anatómicos de máxima tensión mecánica. Cero sobrecarga articular, máxima ganancia.",
+            desc: "Hipertrofia inteligente guiada por ángulos anatómicos de máxima tensión. Cero sobrecarga articular, máxima ganancia.",
             benefits: ["Hipertrofia miofibrilar pura", "Prevención y corrección postural", "Incremento de densidad ósea"],
             slots: [
               "Martes y Jueves 09:00 - 10:00",
               "Martes y Jueves 18:00 - 19:00",
               "Viernes 19:30 - 20:30"
             ],
-            priceBadge: "Incluido en Membresía o Pase $18"
+            priceBadge: "Incluido en Plan Pro o Pase $6.500"
           },
           {
             id: "neuro-flow",
@@ -923,34 +963,34 @@
             coachRole: "Instructora de Respiración y Movilidad",
             spotsLeft: 5,
             image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
-            desc: "Desbloqueo fascial, rango articular completo (CARS), técnicas respiratorias hipopresivas y regulación del sistema nervioso simpático.",
-            benefits: ["Liberación de rigidez en caderas y columna", "Mayor estabilidad y rango de movimiento", "Disminución de estrés y tensión"],
+            desc: "Desbloqueo fascial, rango articular completo (CARS), técnicas respiratorias hipopresivas y calma vagal.",
+            benefits: ["Liberación de rigidez en espalda", "Mayor rango de movimiento", "Disminución de estrés y tensión"],
             slots: [
               "Lunes, Miércoles y Viernes 08:00 - 08:50",
               "Martes y Jueves 20:00 - 20:50"
             ],
-            priceBadge: "Incluido en Membresía o Pase $15"
+            priceBadge: "Incluido en Plan Pro o Pase $6.500"
           },
           {
             id: "hiit-metabolic",
-            title: "Zone 5 Metabolic Sprint Conditioning",
+            title: "Zone 5 Metabolic Conditioning",
             category: "endurance",
             categoryLabel: "Resistencia & Fuerza",
             intensity: 5,
             duration: "45 min",
             calories: "600 - 800 kcal",
             coach: "Mateo Rivera",
-            coachRole: "Preparador Físico de Alto Rendimiento",
+            coachRole: "Preparador Físico",
             spotsLeft: 6,
             image: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=800&q=80",
-            desc: "Intervalos de máxima intensidad monitorizados con bandas cardíacas en directo en pantallas. Quema calórica post-ejercicio acelerada.",
-            benefits: ["Mejora drástica del VO2 Max", "Aceleración metabólica de 24h", "Alta eficiencia de tiempo"],
+            desc: "Intervalos de máxima intensidad monitorizados con bandas cardíacas en pantallas. Quema metabólica post-ejercicio acelerada.",
+            benefits: ["Mejora drástica del VO2 Max", "Aceleración metabólica de 24h", "Alta eficiencia temporal"],
             slots: [
               "Lunes a Viernes 06:30 - 07:15",
               "Lunes a Viernes 13:30 - 14:15",
               "Lunes a Jueves 20:00 - 20:45"
             ],
-            priceBadge: "Incluido en Membresía o Pase $16"
+            priceBadge: "Incluido en Plan Pro o Pase $6.500"
           },
           {
             id: "tech-boxing",
@@ -961,233 +1001,213 @@
             duration: "50 min",
             calories: "650 - 850 kcal",
             coach: "Lucía Méndez",
-            coachRole: "Ex-Boxeadora Olímpica",
+            coachRole: "Ex-Boxeadora",
             spotsLeft: 1,
             image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=800&q=80",
-            desc: "Golpeo al saco sensorial, combinaciones de agilidad neuromuscular, juego de pies y drills de reacción cognitiva.",
-            benefits: ["Descarga total de tensión mental", "Coordinación y agilidad de reflejos", "Fortalecimiento de zona media"],
+            desc: "Golpeo al saco sensorial, agilidad neuromuscular, juego de pies y drills de reacción cognitiva.",
+            benefits: ["Descarga total de tensión mental", "Coordinación y agilidad", "Fortalecimiento de zona media"],
             slots: [
               "Martes y Jueves 07:30 - 08:20",
               "Lunes y Miércoles 18:30 - 19:20"
             ],
-            priceBadge: "Incluido en Membresía o Pase $18"
+            priceBadge: "Incluido en Plan Pro o Pase $6.500"
           }
         ],
 
+        // Precios en ARS accesibles y competitivos
         products: [
           {
             id: "creapure-ultra",
-            name: "Creatina Monohidrato Creapure® Ultramicronizada",
+            name: "Creatina Creapure® Micronizada",
             category: "strength",
-            categoryLabel: "Fuerza & Rendimiento",
-            price: 34.00,
-            size: "300g (100 tomas)",
+            categoryLabel: "Fuerza & Potencia",
+            price: 32000,
+            size: "300g (100 servicios de 3g)",
             badge: "MÁS VENDIDO",
             rating: 4.9,
             reviews: 142,
             image: "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?auto=format&fit=crop&w=600&q=80",
-            features: "100% Creapure® Alemania. Sin sabor ni aditivos. Solubilidad instantánea para fuerza celular y volumen muscular."
+            features: "100% Creapure® Alemania. Máxima pureza celular, sin sabor ni aditivos. Solubilidad instantánea."
           },
           {
             id: "hydro-isolate-whey",
-            name: "Hydro-Isolate Pure Grass-Fed 1kg",
+            name: "Hydro-Isolate Whey Grass-Fed",
             category: "muscle",
             categoryLabel: "Masa Muscular",
-            price: 58.00,
-            size: "1kg (33 servicios)",
+            price: 39500,
+            size: "1kg (33 tomas de 30g)",
             badge: "PREMIUM BIOLAB",
             rating: 5.0,
             reviews: 98,
             image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=600&q=80",
-            features: "28g de proteína por toma, 0g azúcares añadidos, 0% lactosa. Digestión ultrarrápida sabor Cacao Ancestral."
+            features: "28g de proteína pura por toma. 0g azúcares añadidos, 0% lactosa. Sabor Cacao Ancestral."
           },
           {
             id: "biocell-electrolytes",
             name: "Electrolitos Celulares Bio-Cell Matrix",
             category: "hydration",
             categoryLabel: "Hidratación & Energía",
-            price: 26.00,
+            price: 18500,
             size: "250g (50 servicios)",
             badge: "ESENCIAL HYROX",
             rating: 4.8,
             reviews: 84,
             image: "https://images.unsplash.com/photo-1550572017-edd951aa8f72?auto=format&fit=crop&w=600&q=80",
-            features: "Sal Rosa del Himalaya, Magnesio Bisglicinato y Potasio. Cero azúcar. Previene calambres y fatiga durante sesiones intensas."
+            features: "Sal Rosa del Himalaya, Magnesio Bisglicinato y Potasio. Cero azúcar. Previene calambres y fatiga."
           },
           {
             id: "neuro-drive-pre",
-            name: "Nootropic Focus Pre-Workout Neuro-Drive",
+            name: "Pre-Workout Nootrópico Neuro-Drive",
             category: "energy",
             categoryLabel: "Enfoque & Energía",
-            price: 39.00,
+            price: 24500,
             size: "300g (30 servicios)",
             badge: "ENFOQUE LÁSER",
             rating: 4.9,
             reviews: 110,
             image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
-            features: "Alfa-GPC, L-Tirosina y cafeína de grano de café verde. Enfoque mental supremo y bombeo muscular sin taquicardias."
+            features: "Alfa-GPC, L-Tirosina y cafeína de grano de café verde. Enfoque mental supremo sin taquicardias."
           },
           {
             id: "deep-sleep-magnesium",
-            name: "Deep REM Magnesium + Apigenina & GABA",
+            name: "Magnesio Bisglicinato + Apigenina",
             category: "recovery",
-            categoryLabel: "Recuperación & Sueño",
-            price: 31.00,
+            categoryLabel: "Sueño & Recuperación",
+            price: 19800,
             size: "90 cápsulas (30 días)",
             badge: "BIOHACK FAVORITO",
             rating: 4.9,
             reviews: 76,
             image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80",
-            features: "Magnesio quelado TRAACS®, apigenina natural y L-teanina para resetear el sistema nervioso y profundizar el sueño reparador."
+            features: "Magnesio quelado TRAACS®, apigenina natural y L-teanina para silenciar pensamientos y profundizar el descanso."
           },
           {
             id: "omega-3-ultra-pure",
-            name: "Omega-3 IFOS 5★ Triglicéridos Ultra Puro",
+            name: "Omega-3 IFOS 5★ Triglicéridos Puros",
             category: "health",
             categoryLabel: "Salud & Longevidad",
-            price: 29.00,
+            price: 21000,
             size: "60 perlas (60 días)",
             badge: "CERTIFICADO IFOS",
             rating: 4.8,
             reviews: 65,
             image: "https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=600&q=80",
-            features: "800mg EPA y 400mg DHA por cápsula. Destilación molecular libre de metales pesados. Potente desinflamatorio celular."
+            features: "800mg EPA y 400mg DHA por perla. Destilación molecular libre de metales pesados. Desinflamatorio celular."
           },
           {
             id: "stealth-shaker-steel",
-            name: "Shaker Térmico Stealth Acero Quirúrgico 750ml",
+            name: "Shaker Térmico Acero Quirúrgico 750ml",
             category: "gear",
             categoryLabel: "Accesorios & Gear",
-            price: 24.00,
+            price: 16500,
             size: "750ml / 25oz",
             badge: "EDICIÓN LIMITADA",
             rating: 4.7,
             reviews: 52,
             image: "https://images.unsplash.com/photo-1585342565162-aa612f0f4a38?auto=format&fit=crop&w=600&q=80",
-            features: "Acero inoxidable grado 316, doble pared al vacío. Mantiene la bebida helada por 24 horas. Cierre antifugas."
+            features: "Acero inoxidable grado 316, doble pared al vacío. Mantiene el agua helada 24hs. Cierre antifugas."
           },
           {
             id: "heavy-duty-straps",
             name: "Straps de Agarre Kevlar Grip Pro",
             category: "gear",
             categoryLabel: "Accesorios & Gear",
-            price: 18.00,
-            size: "Par ajustable",
+            price: 11000,
+            size: "Par con acolchado neopreno",
             badge: "MÁXIMA TRACCIÓN",
             rating: 4.9,
             reviews: 44,
             image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80",
-            features: "Costuras de kevlar con almohadillas de neopreno. Agarre total para peso muerto y remos pesados sin fatiga de antebrazo."
+            features: "Costuras de kevlar con almohadillas protectoras. Agarre total para peso muerto y remos pesados."
           }
         ],
 
         news: [
           {
             id: "news-cryo",
-            title: "Nueva Zona Cryo & Infrared: La ciencia del contraste térmico llega a Kinetic",
-            tag: "NUEVA ZONA",
+            title: "Nueva Zona Cryo & Infrared en Palermo: Terapia de contraste térmico",
+            tag: "NUEVA SALA",
             category: "instalaciones",
-            date: "Destacado Hoy",
+            date: "Inauguración Hoy",
             readTime: "2 min",
             image: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1000&q=80",
-            excerpt: "Inauguramos oficialmente las tinas de inmersión en frío a 3°C y el sauna de infrarrojo lejano para acelerar tu recuperación hasta un 300%.",
-            content: "La terapia de contraste térmico es la herramienta de biohacking más potente del momento. Alternar entre calor profundo (activando heat shock proteins) y frío agudo (liberando noradrenalina y reduciendo la inflamación) multiplica la regeneración neuromuscular y optimiza el sueño profundo."
+            excerpt: "Inauguramos oficialmente las tinas de inmersión en frío a 3°C y el sauna de infrarrojo para acelerar tu recuperación hasta un 300%.",
+            content: "La terapia de contraste térmico es la herramienta de biohacking más potente del momento. Alternar entre calor profundo y frío agudo multiplica la regeneración neuromuscular y optimiza el descanso."
           },
           {
             id: "news-hyrox-cup",
-            title: "VORTEX HYROX CUP 2026: Inscripciones Abiertas para el torneo interno",
-            tag: "EVENTO EXCLUSIVO",
+            title: "VORTEX HYROX CUP BUENOS AIRES: Torneo interno individual y duplas",
+            tag: "TORNEO EXCLUSIVO",
             category: "eventos",
             date: "Próximo Sábado 18",
             readTime: "3 min",
             image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1000&q=80",
-            excerpt: "¿Listo para poner a prueba tu motor? Abrimos las inscripciones para la copa interna de simulación de carrera HYROX en Individual y Dobles.",
-            content: "Estaciones completas de SkiErg, Sled Push/Pull, Burpee Broad Jumps, Remo, Farmers Carry y Wall Balls con 1km de carrera intermedia. Premiación en suplementación y membresías anuales para las mejores marcas."
+            excerpt: "¿Listo para poner a prueba tu motor? Abrimos las inscripciones para la copa de simulación HYROX con premios en suplementación.",
+            content: "Estaciones completas de SkiErg, Sled Push/Pull, Burpees, Remo, Farmers Carry y Wall Balls. Premiación para los 3 mejores tiempos."
           },
           {
             id: "news-creapure-batch",
-            title: "Lote exclusivo Creapure® y nuevos sabores de Hydro-Isolate disponibles",
-            tag: "TIENDA & NOVEDADES",
+            title: "Nuevo lote de Creatina Creapure® y Proteína Hydro disponible",
+            tag: "STOCK LOCAL",
             category: "tienda",
-            date: "Stock Actualizado",
+            date: "Stock en Recepción",
             readTime: "2 min",
             image: "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?auto=format&fit=crop&w=1000&q=80",
-            excerpt: "Aterrizó el nuevo lote certificado de creatina Creapure® alemana y el codiciado sabor Cold Brew Coffee en proteína hidrolizada.",
-            content: "Lotes analizados con cromatografía independiente garantizando 0% impurezas y máxima biodisponibilidad. Disponibles para retiro en recepción o entrega a domicilio rápida por WhatsApp."
+            excerpt: "Llegó la nueva partida certificada de creatina Creapure® alemana y el sabor Cold Brew Coffee en proteína hidrolizada.",
+            content: "Lotes analizados con 0% impurezas. Disponibles para retiro directo en recepción o envío en moto en el día para CABA y GBA."
           },
           {
             id: "news-masterclass",
-            title: "Masterclass Gratuita: Ritmos Circadianos, Ayuno y Máximo Rendimiento",
-            tag: "TALLER GRATUITO",
+            title: "Taller Gratuito: Ritmos Circadianos y Nutrición para Deportistas",
+            tag: "ENTRADA LIBRE",
             category: "talleres",
             date: "Jueves 20:00 hs",
             readTime: "4 min",
             image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1000&q=80",
-            excerpt: "Aprende cómo sincronizar tus horarios de entreno, ingesta proteica y luz solar para optimizar tu balance hormonal y energía vital.",
-            content: "Charla magistral presencial en el auditorio del gym dictada por médicos deportivos. Incluye cata de electrolitos y café nootrópico para todos los asistentes."
+            excerpt: "Aprende cómo sincronizar tus horarios de entrenamiento, comidas y descanso para maximizar tu energía vital.",
+            content: "Charla presencial en el auditorio del gym dictada por médicos deportivos. Incluye cata de electrolitos fríos para todos los asistentes."
           }
         ],
 
+        // Precios coherentes en Argentina
         plans: [
           {
             id: "pass-day",
-            name: "PASS EXPERIENCIA",
-            price: 15,
-            period: "Pase diario único",
-            badge: "SIN COMPROMISO",
-            popular: false,
-            features: [
-              "Acceso de día completo a sala de musculación biomecánica",
-              "1 clase grupal guiada a elección",
-              "Vestuarios con amenities premium",
-              "Bebida isotónica de bienvenida cortesía del Lab"
-            ]
+            name: "PASE DIARIO",
+            price: 6500,
+            period: "Día completo",
+            badge: "SIN MATRÍCULA",
+            popular: false
           },
           {
             id: "plan-pro",
             name: "KINETIC PRO",
-            price: 65,
-            period: "Suscripción mensual",
-            badge: "MÁS POPULAR",
-            popular: true,
-            features: [
-              "Acceso ilimitado 7 días a la semana",
-              "Todas las actividades y clases grupales incluidas",
-              "Monitoreo cardíaco en pantallas en clases HIIT",
-              "Locker permanente y toallas ilimitadas",
-              "App de registro de cargas y marcas",
-              "1 sesión de Cryo & Contrast Lab mensual"
-            ]
+            price: 36000,
+            period: "Facturación mensual",
+            badge: "MÁS ELEGIDO",
+            popular: true
           },
           {
             id: "plan-elite",
             name: "ELITE BIOHACKER",
-            price: 115,
-            period: "Suscripción mensual",
-            badge: "EXPERIENCIA TOTAL",
-            popular: false,
-            features: [
-              "Todo lo incluido en KINETIC PRO",
-              "Acceso ILIMITADO al Cryo & Infrared Contrast Lab (Hielo + Sauna)",
-              "15% de descuento permanente en la tienda de suplementos",
-              "Evaluación mensual de bioimpedancia y composición corporal",
-              "Plan nutricional personalizado y ajuste de suplementación",
-              "2 pases de invitado al mes"
-            ]
+            price: 54000,
+            period: "Facturación mensual",
+            badge: "VIP COMPLETO",
+            popular: false
           }
         ],
 
         bioGoals: [
           {
             id: "goal-strength",
-            title: "Aumento de Fuerza & Masa Muscular",
+            title: "Fuerza & Masa Muscular",
             activityId: "power-sculpt",
             productIds: ["hydro-isolate-whey", "creapure-ultra", "heavy-duty-straps"],
             desc: "Enfoque en tensión mecánica progresiva, proteína hidrolizada rápida y saturación muscular de fosfocreatina pura."
           },
           {
             id: "goal-hyrox",
-            title: "Resistencia Atlética & Hyrox",
+            title: "Resistencia Atlética Hyrox",
             activityId: "hyrox-protocol",
             productIds: ["biocell-electrolytes", "creapure-ultra", "neuro-drive-pre"],
             desc: "Intervalos de alta densidad, equilibrio de minerales intra-sesión y concentración mental ante la fatiga metabólica."
@@ -1197,14 +1217,14 @@
             title: "Salud, Desinflamación & Longevidad",
             activityId: "bio-contrast",
             productIds: ["deep-sleep-magnesium", "omega-3-ultra-pure", "biocell-electrolytes"],
-            desc: "Estímulo de choque térmico (frío/calor) para regeneración celular, optimización de ondas delta en el sueño y soporte de ácidos grasos EPA/DHA."
+            desc: "Estímulo de choque térmico (frío/calor) para regeneración celular, ondas delta en el sueño y soporte EPA/DHA."
           },
           {
             id: "goal-fatloss",
             title: "Quema Grasa & Acondicionamiento",
             activityId: "hiit-metabolic",
             productIds: ["biocell-electrolytes", "hydro-isolate-whey", "stealth-shaker-steel"],
-            desc: "Entrenamiento por zonas cardíacas para acelerar el consumo metabólico glucogénico preservando toda la masa muscular."
+            desc: "Entrenamiento por zonas cardíacas para acelerar el gasto calórico preservando al máximo la masa muscular magra."
           }
         ]
       };
@@ -1224,6 +1244,16 @@
         activeGoalId: "goal-strength"
       };
 
+      // Toggle Menú Móvil
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-menu");
+        const icon = document.getElementById("mobile-menu-icon");
+        if (!menu) return;
+        const isHidden = menu.classList.contains("hidden");
+        menu.classList.toggle("hidden");
+        icon.textContent = isHidden ? "✕" : "☰";
+      }
+
       // 3. WHATSAPP & FEEDBACK ENGINE
       function openWhatsApp(message) {
         const phone = state.whatsAppPhone.replace(/[^0-9]/g, "");
@@ -1234,7 +1264,7 @@
       function triggerConfetti() {
         if (typeof confetti === "function") {
           confetti({
-            particleCount: 70,
+            particleCount: 65,
             spread: 60,
             origin: { y: 0.65 },
             colors: ["#ccff00", "#00f0ff", "#ffffff"]
@@ -1248,10 +1278,10 @@
 
         const toast = document.createElement("div");
         const borderCol = type === "error" ? "border-red-500/50" : type === "info" ? "border-[#00f0ff]/50" : "border-[#ccff00]/50";
-        toast.className = `p-4 rounded-xl bg-[#0e1017]/95 border ${borderCol} shadow-2xl backdrop-blur-md text-white text-xs font-mono flex items-center justify-between gap-3 pointer-events-auto transition-all transform translate-y-2`;
+        toast.className = `p-3 sm:p-4 rounded-xl bg-[#0e1017]/95 border ${borderCol} shadow-2xl backdrop-blur-md text-white text-xs font-mono flex items-center justify-between gap-3 pointer-events-auto transition-all transform translate-y-2`;
         toast.innerHTML = `
           <div class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full ${type === "error" ? "bg-red-400" : type === "info" ? "bg-[#00f0ff]" : "bg-[#ccff00]"} animate-ping"></span>
+            <span class="w-2 h-2 rounded-full ${type === "error" ? "bg-red-400" : type === "info" ? "bg-[#00f0ff]" : "bg-[#ccff00]"} animate-ping shrink-0"></span>
             <span>${message}</span>
           </div>
         `;
@@ -1307,13 +1337,13 @@
         if (clean === "KINETIC10" || clean === "BIOWELLNESS") {
           state.promoCode = clean;
           state.discountPercent = 10;
-          showToast("¡Cupón aplicado! 10% de descuento concedido");
+          showToast("¡Cupón aplicado! 10% de descuento");
           renderCart();
           return true;
         } else if (clean === "ELITE20") {
           state.promoCode = clean;
           state.discountPercent = 20;
-          showToast("¡Cupón VIP aplicado! 20% de descuento concedido");
+          showToast("¡Cupón VIP aplicado! 20% de descuento");
           renderCart();
           return true;
         } else {
@@ -1338,11 +1368,11 @@
         }, 0);
 
         if (cartSubtotalEl) {
-          cartSubtotalEl.textContent = subtotal > 0 ? `$${subtotal.toFixed(0)}` : "TIENDA";
+          cartSubtotalEl.textContent = subtotal > 0 ? formatARS(subtotal) : "TIENDA";
         }
       }
 
-      // 5. RENDER METHODS
+      // 5. RENDER FUNCTIONS
       function renderActivities() {
         const container = document.getElementById("activities-grid");
         if (!container) return;
@@ -1352,36 +1382,36 @@
           : GYM_DATA.activities.filter(a => a.category === state.activeActivityCategory);
 
         container.innerHTML = filtered.map(act => `
-          <div class="group flex flex-col justify-between rounded-3xl bg-[#0f1118] border border-white/10 overflow-hidden hover:border-[#ccff00]/50 transition-all duration-300 hover:-translate-y-1 shadow-xl text-left">
-            <div class="relative h-60 w-full overflow-hidden">
+          <div class="group flex flex-col justify-between rounded-2xl sm:rounded-3xl bg-[#0f1118] border border-white/10 overflow-hidden hover:border-[#ccff00]/50 transition-all duration-300 hover:-translate-y-1 shadow-xl text-left">
+            <div class="relative h-48 sm:h-56 w-full overflow-hidden">
               <img src="${act.image}" alt="${act.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#0f1118] via-transparent to-transparent"></div>
-              <div class="absolute top-4 left-4">
-                <span class="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-[#ccff00] font-mono text-[11px] font-black uppercase border border-[#ccff00]/30">
+              <div class="absolute top-3 left-3">
+                <span class="px-2.5 py-0.5 rounded-full bg-black/75 backdrop-blur-md text-[#ccff00] font-mono text-[10px] font-black uppercase border border-[#ccff00]/30">
                   ${act.categoryLabel}
                 </span>
               </div>
-              <div class="absolute top-4 right-4">
-                <span class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold uppercase backdrop-blur-md border ${
+              <div class="absolute top-3 right-3">
+                <span class="px-2 py-0.5 rounded-full font-mono text-[9px] sm:text-[10px] font-bold uppercase backdrop-blur-md border ${
                   act.spotsLeft <= 2 ? 'bg-red-500/20 text-red-400 border-red-500/40 animate-pulse' : 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30'
                 }">
-                  ${act.spotsLeft <= 2 ? `¡ÚLTIMOS ${act.spotsLeft} CUPOS!` : `${act.spotsLeft} CUPOS DISPONIBLES`}
+                  ${act.spotsLeft <= 2 ? `¡ÚLTIMOS ${act.spotsLeft} CUPOS!` : `${act.spotsLeft} CUPOS LIBRES`}
                 </span>
               </div>
-              <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs font-mono text-gray-300">
-                <span class="bg-black/60 px-2.5 py-1 rounded-lg border border-white/10">⏱️ ${act.duration}</span>
-                <span class="bg-black/60 px-2.5 py-1 rounded-lg border border-white/10 text-[#ccff00]">🔥 ${act.calories}</span>
+              <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-gray-300">
+                <span class="bg-black/60 px-2 py-0.5 rounded-lg border border-white/10">⏱️ ${act.duration}</span>
+                <span class="bg-black/60 px-2 py-0.5 rounded-lg border border-white/10 text-[#ccff00]">🔥 ${act.calories}</span>
               </div>
             </div>
 
-            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-              <div class="space-y-2.5">
+            <div class="p-4 sm:p-6 flex-1 flex flex-col justify-between space-y-3.5 sm:space-y-4">
+              <div class="space-y-2">
                 <div class="flex items-center justify-between text-xs font-mono text-gray-400">
                   <span>INTENSIDAD:</span>
                   <span class="text-[#ccff00] font-bold tracking-widest">${"⚡".repeat(act.intensity)}</span>
                 </div>
 
-                <h3 class="text-xl font-display font-extrabold text-white group-hover:text-[#ccff00] transition-colors leading-tight">
+                <h3 class="text-lg sm:text-xl font-display font-extrabold text-white group-hover:text-[#ccff00] transition-colors leading-tight">
                   ${act.title}
                 </h3>
 
@@ -1391,7 +1421,7 @@
 
                 <div class="space-y-1 pt-1">
                   ${act.benefits.map(b => `
-                    <div class="flex items-center gap-2 text-xs text-gray-400">
+                    <div class="flex items-center gap-1.5 text-xs text-gray-400">
                       <span class="text-[#ccff00] font-bold">✓</span>
                       <span>${b}</span>
                     </div>
@@ -1399,10 +1429,10 @@
                 </div>
               </div>
 
-              <div class="pt-4 border-t border-white/10 space-y-3">
+              <div class="pt-3 border-t border-white/10 space-y-2.5">
                 <div class="flex items-center justify-between text-xs">
                   <div>
-                    <span class="text-[10px] font-mono text-gray-500 block uppercase">COACH</span>
+                    <span class="text-[9px] font-mono text-gray-500 block uppercase">COACH</span>
                     <span class="font-semibold text-white">${act.coach}</span>
                   </div>
                   <span class="text-[11px] font-mono text-[#00f0ff]">${act.priceBadge}</span>
@@ -1410,7 +1440,7 @@
 
                 <button 
                   onclick="openBookingModal('${act.id}')"
-                  class="w-full py-3.5 px-4 rounded-xl bg-[#ccff00] hover:bg-[#b8e600] text-black font-extrabold text-xs font-mono tracking-wider transition-all hover:scale-[1.02] shadow-[0_0_15px_rgba(204,255,0,0.25)] flex items-center justify-center gap-2"
+                  class="w-full py-3 rounded-xl bg-[#ccff00] hover:bg-[#b8e600] text-black font-extrabold text-xs font-mono tracking-wider transition-all active:scale-95 shadow-[0_0_15px_rgba(204,255,0,0.25)] flex items-center justify-center gap-1.5"
                 >
                   <span>RESERVAR / SUSCRIBIRME</span>
                   <span>↗</span>
@@ -1431,29 +1461,29 @@
 
         container.innerHTML = filtered.map(prod => `
           <div class="group flex flex-col justify-between rounded-2xl bg-[#0e1015] border border-white/10 overflow-hidden hover:border-[#ccff00]/40 transition-all duration-300 hover:-translate-y-1 shadow-lg text-left">
-            <div class="relative h-56 w-full overflow-hidden bg-black/40">
+            <div class="relative h-48 sm:h-52 w-full overflow-hidden bg-black/40">
               <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#0e1015] via-transparent to-transparent"></div>
-              <div class="absolute top-3 left-3">
-                <span class="px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md text-[#ccff00] font-mono text-[10px] font-extrabold uppercase border border-[#ccff00]/30 shadow-md">
+              <div class="absolute top-2.5 left-2.5">
+                <span class="px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md text-[#ccff00] font-mono text-[9px] sm:text-[10px] font-extrabold uppercase border border-[#ccff00]/30 shadow-md">
                   ${prod.badge}
                 </span>
               </div>
-              <div class="absolute bottom-2 left-3">
-                <span class="text-[10px] font-mono text-gray-300 bg-black/60 px-2 py-0.5 rounded border border-white/10 backdrop-blur-sm">
+              <div class="absolute bottom-2 left-2.5">
+                <span class="text-[9px] sm:text-[10px] font-mono text-gray-300 bg-black/60 px-2 py-0.5 rounded border border-white/10 backdrop-blur-sm">
                   ${prod.size}
                 </span>
               </div>
             </div>
 
-            <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
-              <div class="space-y-2">
+            <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
+              <div class="space-y-1.5">
                 <div class="flex items-center justify-between text-xs">
-                  <span class="font-mono text-gray-500 uppercase text-[10px]">${prod.categoryLabel}</span>
+                  <span class="font-mono text-gray-500 uppercase text-[9px] sm:text-[10px]">${prod.categoryLabel}</span>
                   <span class="text-[#ccff00] font-bold text-xs">★ ${prod.rating} <span class="text-gray-500 font-normal">(${prod.reviews})</span></span>
                 </div>
 
-                <h3 class="text-base font-display font-bold text-white group-hover:text-[#ccff00] transition-colors leading-snug line-clamp-2">
+                <h3 class="text-sm sm:text-base font-display font-bold text-white group-hover:text-[#ccff00] transition-colors leading-snug line-clamp-2">
                   ${prod.name}
                 </h3>
 
@@ -1462,10 +1492,10 @@
                 </p>
               </div>
 
-              <div class="pt-3 border-t border-white/10 space-y-2">
+              <div class="pt-2.5 border-t border-white/10 space-y-2">
                 <div class="flex items-baseline justify-between">
-                  <span class="text-xs font-mono text-gray-400">PRECIO:</span>
-                  <span class="text-xl font-mono font-extrabold text-[#ccff00]">$${prod.price.toFixed(2)}</span>
+                  <span class="text-[10px] font-mono text-gray-400">PRECIO:</span>
+                  <span class="text-lg sm:text-xl font-mono font-extrabold text-[#ccff00]">${formatARS(prod.price)}</span>
                 </div>
 
                 <div class="grid grid-cols-2 gap-2">
@@ -1473,7 +1503,7 @@
                     onclick="addToCart('${prod.id}', 1)"
                     class="py-2.5 px-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-mono text-xs font-bold transition-colors flex items-center justify-center gap-1"
                   >
-                    <span>+ Agregar</span>
+                    <span>+ Carrito</span>
                   </button>
                   <button 
                     onclick="quickBuy('${prod.id}')"
@@ -1498,25 +1528,25 @@
 
         container.innerHTML = filtered.map(item => `
           <div class="group flex flex-col justify-between rounded-2xl bg-[#0e1015] border border-white/10 overflow-hidden hover:border-[#ccff00]/40 transition-all duration-300 hover:-translate-y-1 shadow-lg text-left">
-            <div class="relative h-48 w-full overflow-hidden">
+            <div class="relative h-40 sm:h-44 w-full overflow-hidden">
               <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#0e1015] via-transparent to-transparent"></div>
-              <div class="absolute top-3 left-3">
-                <span class="px-2.5 py-0.5 rounded-full bg-black/75 backdrop-blur-md text-[#ccff00] font-mono text-[10px] font-extrabold uppercase border border-[#ccff00]/30">
+              <div class="absolute top-2.5 left-2.5">
+                <span class="px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md text-[#ccff00] font-mono text-[9px] sm:text-[10px] font-extrabold uppercase border border-[#ccff00]/30">
                   ${item.tag}
                 </span>
               </div>
             </div>
 
-            <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
-              <div class="space-y-2">
-                <div class="flex items-center gap-2 text-[11px] font-mono text-gray-400">
+            <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
+              <div class="space-y-1.5">
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono text-gray-400">
                   <span class="text-[#00f0ff]">${item.readTime}</span>
                   <span>•</span>
                   <span>${item.date}</span>
                 </div>
 
-                <h4 class="text-lg font-display font-bold text-white group-hover:text-[#ccff00] transition-colors leading-snug">
+                <h4 class="text-sm sm:text-base font-display font-bold text-white group-hover:text-[#ccff00] transition-colors leading-snug">
                   ${item.title}
                 </h4>
 
@@ -1525,7 +1555,7 @@
                 </p>
               </div>
 
-              <div class="pt-3 border-t border-white/5 flex items-center justify-between gap-2">
+              <div class="pt-2.5 border-t border-white/5 flex items-center justify-between gap-2">
                 <button 
                   onclick="openNewsModal('${item.id}')"
                   class="text-xs font-mono font-bold text-white hover:text-[#ccff00] flex items-center gap-1 transition-colors"
@@ -1535,7 +1565,7 @@
 
                 <button 
                   onclick="sendNewsWhatsApp('${item.id}')"
-                  class="px-3 py-1.5 rounded-lg bg-[#25D366]/15 hover:bg-[#25D366]/25 text-[#25D366] text-xs font-mono font-bold transition-colors flex items-center gap-1"
+                  class="px-2.5 py-1.5 rounded-lg bg-[#25D366]/15 hover:bg-[#25D366]/25 text-[#25D366] text-xs font-mono font-bold transition-colors flex items-center gap-1"
                 >
                   <span>WhatsApp 💬</span>
                 </button>
@@ -1554,25 +1584,25 @@
         if (!goalEl) return;
 
         goalEl.innerHTML = `
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left">
-            <div class="lg:col-span-5 space-y-6">
-              <div class="space-y-2">
-                <span class="text-xs font-mono uppercase tracking-widest text-[#ccff00] font-bold">// ESTRATEGIA RECOMENDADA</span>
-                <h3 class="text-2xl sm:text-3xl font-display font-extrabold text-white">${goal.title}</h3>
-                <p class="text-sm text-gray-300 leading-relaxed pt-1">${goal.desc}</p>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center text-left">
+            <div class="lg:col-span-5 space-y-4 sm:space-y-5">
+              <div class="space-y-1.5">
+                <span class="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#ccff00] font-bold">// ESTRATEGIA PERSONALIZADA</span>
+                <h3 class="text-xl sm:text-2xl font-display font-extrabold text-white">${goal.title}</h3>
+                <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">${goal.desc}</p>
               </div>
 
               ${act ? `
-                <div class="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-3">
-                  <div class="text-[11px] font-mono text-[#00f0ff] uppercase font-bold">ACTIVIDAD IDEAL:</div>
-                  <div class="flex gap-3 items-center">
-                    <img src="${act.image}" alt="${act.title}" class="w-16 h-16 rounded-xl object-cover" />
+                <div class="p-3.5 rounded-xl bg-black/40 border border-white/10 space-y-2.5">
+                  <div class="text-[10px] font-mono text-[#00f0ff] uppercase font-bold">ACTIVIDAD RECOMENDADA:</div>
+                  <div class="flex gap-2.5 items-center">
+                    <img src="${act.image}" alt="${act.title}" class="w-14 h-14 rounded-lg object-cover shrink-0" />
                     <div>
-                      <h4 class="text-sm font-bold text-white">${act.title}</h4>
-                      <p class="text-xs text-gray-400 mt-0.5">${act.duration} • Coach ${act.coach}</p>
+                      <h4 class="text-xs sm:text-sm font-bold text-white">${act.title}</h4>
+                      <p class="text-[11px] text-gray-400 mt-0.5">${act.duration} • Coach ${act.coach}</p>
                     </div>
                   </div>
-                  <button onclick="openBookingModal('${act.id}')" class="w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono text-xs font-bold transition-colors flex items-center justify-center gap-2">
+                  <button onclick="openBookingModal('${act.id}')" class="w-full py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono text-xs font-bold transition-colors flex items-center justify-center gap-1.5">
                     <span>Reservar sesión de prueba</span>
                     <span class="text-[#ccff00]">↗</span>
                   </button>
@@ -1580,24 +1610,24 @@
               ` : ''}
             </div>
 
-            <div class="lg:col-span-7 space-y-4">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-mono uppercase tracking-widest text-[#00f0ff] font-bold">// STACK DE SUPLEMENTOS RECOMENDADO</span>
-                <button onclick="addGoalStack('${goal.id}')" class="px-3.5 py-1.5 rounded-xl bg-[#ccff00] hover:bg-[#b8e600] text-black font-mono text-xs font-extrabold transition-all flex items-center gap-1.5 shadow-[0_0_15px_rgba(204,255,0,0.25)]">
-                  <span>Añadir Stack Completo (${prods.length})</span>
+            <div class="lg:col-span-7 space-y-3.5">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span class="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#00f0ff] font-bold">// STACK DE SUPLEMENTACIÓN RECOMENDADO</span>
+                <button onclick="addGoalStack('${goal.id}')" class="self-start sm:self-auto px-3 py-1.5 rounded-xl bg-[#ccff00] hover:bg-[#b8e600] text-black font-mono text-xs font-extrabold transition-all flex items-center gap-1 shadow-[0_0_15px_rgba(204,255,0,0.25)]">
+                  <span>Añadir Stack (${prods.length})</span>
                 </button>
               </div>
 
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
                 ${prods.map(p => `
-                  <div class="p-3 rounded-2xl bg-black/50 border border-white/10 flex flex-col justify-between space-y-2 hover:border-[#ccff00]/40 transition-colors">
-                    <div class="space-y-1.5">
-                      <img src="${p.image}" alt="${p.name}" class="w-full h-24 rounded-lg object-cover" />
-                      <span class="text-[10px] font-mono text-[#ccff00] block uppercase font-bold truncate">${p.categoryLabel}</span>
+                  <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-black/50 border border-white/10 flex flex-col justify-between space-y-2 hover:border-[#ccff00]/40 transition-colors">
+                    <div class="space-y-1">
+                      <img src="${p.image}" alt="${p.name}" class="w-full h-20 sm:h-24 rounded-lg object-cover" />
+                      <span class="text-[9px] font-mono text-[#ccff00] block uppercase font-bold truncate">${p.categoryLabel}</span>
                       <h5 class="text-xs font-bold text-white line-clamp-2 leading-snug">${p.name}</h5>
                     </div>
                     <div class="pt-2 border-t border-white/5 flex items-center justify-between">
-                      <span class="text-xs font-mono font-bold text-white">$${p.price.toFixed(2)}</span>
+                      <span class="text-xs font-mono font-bold text-white">${formatARS(p.price)}</span>
                       <button onclick="addToCart('${p.id}', 1)" class="p-1.5 rounded-lg bg-white/10 hover:bg-[#ccff00] hover:text-black text-gray-300 transition-colors">
                         🛒
                       </button>
@@ -1637,20 +1667,20 @@
           subtotal += lineTotal;
 
           return `
-            <div class="flex gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition-colors text-left">
-              <img src="${prod.image}" alt="${prod.name}" class="w-16 h-16 rounded-xl object-cover shrink-0 border border-white/10" />
+            <div class="flex gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition-colors text-left">
+              <img src="${prod.image}" alt="${prod.name}" class="w-14 h-14 rounded-lg object-cover shrink-0 border border-white/10" />
               <div class="flex-1 min-w-0 flex flex-col justify-between">
                 <div class="flex items-start justify-between gap-1">
                   <h4 class="text-xs font-bold text-white leading-tight truncate">${prod.name}</h4>
-                  <button onclick="removeFromCart('${prod.id}')" class="text-gray-500 hover:text-red-400 p-1">✕</button>
+                  <button onclick="removeFromCart('${prod.id}')" class="text-gray-500 hover:text-red-400 p-0.5 text-xs">✕</button>
                 </div>
-                <div class="text-[11px] font-mono text-gray-400">${prod.size}</div>
+                <div class="text-[10px] font-mono text-gray-400">${prod.size}</div>
                 <div class="flex items-center justify-between mt-1">
-                  <span class="text-xs font-mono font-bold text-[#ccff00]">$${lineTotal.toFixed(2)}</span>
-                  <div class="flex items-center gap-2 bg-black/60 border border-white/10 rounded-lg px-2 py-0.5">
-                    <button onclick="updateQuantity('${prod.id}', -1)" class="text-gray-400 hover:text-white px-1 font-bold">-</button>
+                  <span class="text-xs font-mono font-bold text-[#ccff00]">${formatARS(lineTotal)}</span>
+                  <div class="flex items-center gap-1.5 bg-black/60 border border-white/10 rounded-lg px-2 py-0.5">
+                    <button onclick="updateQuantity('${prod.id}', -1)" class="text-gray-400 hover:text-white px-1 font-bold text-xs">-</button>
                     <span class="text-xs font-mono font-bold text-white min-w-4 text-center">${item.quantity}</span>
-                    <button onclick="updateQuantity('${prod.id}', 1)" class="text-gray-400 hover:text-white px-1 font-bold">+</button>
+                    <button onclick="updateQuantity('${prod.id}', 1)" class="text-gray-400 hover:text-white px-1 font-bold text-xs">+</button>
                   </div>
                 </div>
               </div>
@@ -1661,14 +1691,14 @@
         const discountAmount = (subtotal * state.discountPercent) / 100;
         const total = Math.max(0, subtotal - discountAmount);
 
-        document.getElementById("cart-subtotal").textContent = `$${subtotal.toFixed(2)}`;
-        document.getElementById("cart-total").textContent = `$${total.toFixed(2)}`;
+        document.getElementById("cart-subtotal").textContent = formatARS(subtotal);
+        document.getElementById("cart-total").textContent = formatARS(total);
 
         const discountRow = document.getElementById("cart-discount-row");
         if (discountRow) {
           if (state.discountPercent > 0) {
             discountRow.classList.remove("hidden");
-            document.getElementById("cart-discount-amount").textContent = `-$${discountAmount.toFixed(2)} (${state.promoCode})`;
+            document.getElementById("cart-discount-amount").textContent = `-${formatARS(discountAmount)} (${state.promoCode})`;
           } else {
             discountRow.classList.add("hidden");
           }
@@ -1693,9 +1723,9 @@
 
         const slotsContainer = document.getElementById("booking-modal-slots");
         slotsContainer.innerHTML = act.slots.map((s, idx) => `
-          <label class="p-3 rounded-xl border border-white/10 bg-black/40 text-xs flex items-center gap-2.5 cursor-pointer hover:border-[#ccff00]/40 transition-colors">
+          <label class="p-2.5 rounded-xl border border-white/10 bg-black/40 text-xs flex items-center gap-2 cursor-pointer hover:border-[#ccff00]/40 transition-colors">
             <input type="radio" name="booking-slot" value="${s}" ${idx === 0 ? "checked" : ""} class="accent-[#ccff00]" />
-            <span class="text-gray-300 font-mono">${s}</span>
+            <span class="text-gray-300 font-mono text-[11px] sm:text-xs">${s}</span>
           </label>
         `).join("");
 
@@ -1757,11 +1787,11 @@
         goal.productIds.forEach(id => {
           addToCart(id, 1);
         });
-        showToast(`Stack completo (${goal.productIds.length} productos) añadido`);
+        showToast(`Stack de ${goal.productIds.length} productos añadido al carrito`);
         openCartDrawer();
       }
 
-      // 7. FORM SUBMISSIONS VIA WHATSAPP
+      // 7. FORM SUBMISSIONS VIA WHATSAPP (CON FORMATO ARS Y MENSAJE ARGENTINO)
       function handleBookingSubmit(e) {
         e.preventDefault();
         const name = document.getElementById("booking-name").value.trim();
@@ -1779,12 +1809,12 @@
 `⚡ *RESERVA DE ACTIVIDAD // KINETIC LAB*
 ━━━━━━━━━━━━━━━━━━━━
 🏋️ *Actividad:* ${state.selectedActivity.title}
-👤 *Cliente:* ${name}
+👤 *Nombre:* ${name}
 📱 *Contacto:* ${phone}
 📅 *Turno:* ${slot}
 🎟️ *Tipo de Pase:* ${passType}
 ${notes ? `📝 *Observaciones:* ${notes}\n` : ""}━━━━━━━━━━━━━━━━━━━━
-¡Hola equipo de Kinetic Lab! Deseo confirmar mi lugar para esta sesión. ¿Me indican los detalles para el acceso? Muchas gracias!`;
+¡Hola equipo de Kinetic Lab! Deseo confirmar mi lugar para esta sesión en Palermo. ¿Me indican los detalles para el acceso? ¡Muchas gracias!`;
 
         triggerConfetti();
         openWhatsApp(msg);
@@ -1808,7 +1838,7 @@ ${notes ? `📝 *Observaciones:* ${notes}\n` : ""}━━━━━━━━━━
 
         let itemsList = state.cart.map(item => {
           const p = GYM_DATA.products.find(x => x.id === item.id);
-          return `• ${item.quantity}x *${p.name}* ($${(p.price * item.quantity).toFixed(2)})`;
+          return `• ${item.quantity}x *${p.name}* (${formatARS(p.price * item.quantity)})`;
         }).join("\n");
 
         const subtotal = state.cart.reduce((sum, item) => {
@@ -1823,14 +1853,14 @@ ${notes ? `📝 *Observaciones:* ${notes}\n` : ""}━━━━━━━━━━
 ━━━━━━━━━━━━━━━━━━━━
 👤 *Cliente:* ${name}
 📱 *Teléfono:* ${phone}
-📍 *Modalidad:* ${state.deliveryMethod === 'pickup' ? 'Retiro en Recepción Gym (Gratis)' : 'Envío a Domicilio'}
+📍 *Modalidad:* ${state.deliveryMethod === 'pickup' ? 'Retiro en Recepción Palermo (Gratis)' : 'Envío en Moto Express (CABA/GBA)'}
 ${state.deliveryMethod === 'delivery' && address ? `🏠 *Dirección:* ${address}\n` : ""}━━━━━━━━━━━━━━━━━━━━
 📦 *DETALLE DEL PEDIDO:*
 ${itemsList}
-${state.discountPercent > 0 ? `🎟️ *Cupón (${state.promoCode}):* -$${discountAmount.toFixed(2)}\n` : ""}━━━━━━━━━━━━━━━━━━━━
-💰 *TOTAL A PAGAR: $${total.toFixed(2)}*
+${state.discountPercent > 0 ? `🎟️ *Cupón (${state.promoCode}):* -${formatARS(discountAmount)}\n` : ""}━━━━━━━━━━━━━━━━━━━━
+💰 *TOTAL A ABONAR: ${formatARS(total)}*
 ${notes ? `📝 *Notas:* ${notes}\n` : ""}━━━━━━━━━━━━━━━━━━━━
-Hola! Quiero formalizar este pedido con ustedes. ¿Me confirman disponibilidad y medios de pago? Gracias!`;
+¡Hola! Quiero confirmar este pedido de suplementos. ¿Me pasan los datos para transferir por Mercado Pago o coordinamos el pago al retirar? ¡Gracias!`;
 
         triggerConfetti();
         openWhatsApp(msg);
@@ -1847,10 +1877,10 @@ Hola! Quiero formalizar este pedido con ustedes. ¿Me confirman disponibilidad y
         const msg = 
 `💎 *ALTA DE MEMBRESÍA // KINETIC LAB*
 ━━━━━━━━━━━━━━━━━━━━
-🔥 *Plan Solicitado:* ${plan.name} ($${plan.price} / ${plan.period})
+🔥 *Plan Solicitado:* ${plan.name} (${formatARS(plan.price)} / ${plan.period})
 🏷️ *Categoría:* ${plan.badge}
 ━━━━━━━━━━━━━━━━━━━━
-Hola equipo Kinetic Lab! Quiero activar mi suscripción a la membresía *${plan.name}*. ¿Podrían indicarme los requisitos y coordinar el alta? ¡Muchas gracias!`;
+¡Hola equipo de Kinetic Lab! Quiero activar mi suscripción al plan *${plan.name}*. ¿Podrían indicarme los requisitos y coordinar el alta? ¡Muchas gracias!`;
 
         triggerConfetti();
         openWhatsApp(msg);
@@ -1866,7 +1896,7 @@ Hola equipo Kinetic Lab! Quiero activar mi suscripción a la membresía *${plan.
 📌 *Asunto:* ${item.title}
 🏷️ *Categoría:* ${item.tag}
 ━━━━━━━━━━━━━━━━━━━━
-Hola! Leí la novedad sobre "${item.title}" en la web de Kinetic y me gustaría obtener más información o reservar mi participación. ¿Me dan detalles?`;
+¡Hola! Leí la novedad sobre "${item.title}" en la web de Kinetic y me gustaría obtener más información o reservar mi lugar. ¿Me dan detalles?`;
 
         triggerConfetti();
         openWhatsApp(msg);
@@ -1874,7 +1904,7 @@ Hola! Leí la novedad sobre "${item.title}" en la web de Kinetic y me gustaría 
       }
 
       function sendDirectWhatsApp(text) {
-        openWhatsApp(text || "Hola Kinetic Lab! Quisiera consultar información sobre el gimnasio.");
+        openWhatsApp(text || "¡Hola Kinetic Lab! Quisiera consultar información sobre las actividades y planes del gimnasio.");
       }
 
       function saveWhatsAppSettings(e) {
@@ -1886,7 +1916,7 @@ Hola! Leí la novedad sobre "${item.title}" en la web de Kinetic y me gustaría 
         state.whatsAppPhone = cleaned;
         localStorage.setItem("kinetic_phone", cleaned);
         closeSettingsModal();
-        showToast(`Número de WhatsApp actualizado: +${cleaned}`, "info");
+        showToast(`WhatsApp receptor guardado: +${cleaned}`, "info");
 
         const footerPhone = document.getElementById("footer-whatsapp-display");
         if (footerPhone) footerPhone.textContent = `+${cleaned}`;
@@ -1904,9 +1934,9 @@ Hola! Leí la novedad sobre "${item.title}" en la web de Kinetic y me gustaría 
         document.querySelectorAll("[data-activity-filter]").forEach(btn => {
           btn.addEventListener("click", () => {
             document.querySelectorAll("[data-activity-filter]").forEach(b => {
-              b.className = "px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5";
+              b.className = "shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5";
             });
-            btn.className = "px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-[#00f0ff] text-black font-extrabold shadow-[0_0_15px_rgba(0,240,255,0.3)]";
+            btn.className = "shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-[#00f0ff] text-black font-extrabold shadow-[0_0_15px_rgba(0,240,255,0.3)]";
             state.activeActivityCategory = btn.getAttribute("data-activity-filter");
             renderActivities();
           });
@@ -1916,9 +1946,9 @@ Hola! Leí la novedad sobre "${item.title}" en la web de Kinetic y me gustaría 
         document.querySelectorAll("[data-product-filter]").forEach(btn => {
           btn.addEventListener("click", () => {
             document.querySelectorAll("[data-product-filter]").forEach(b => {
-              b.className = "px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5";
+              b.className = "shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5";
             });
-            btn.className = "px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-[#ccff00] text-black font-extrabold shadow-[0_0_15px_rgba(204,255,0,0.3)]";
+            btn.className = "shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-[#ccff00] text-black font-extrabold shadow-[0_0_15px_rgba(204,255,0,0.3)]";
             state.activeProductCategory = btn.getAttribute("data-product-filter");
             renderProducts();
           });
@@ -1928,9 +1958,9 @@ Hola! Leí la novedad sobre "${item.title}" en la web de Kinetic y me gustaría 
         document.querySelectorAll("[data-news-filter]").forEach(btn => {
           btn.addEventListener("click", () => {
             document.querySelectorAll("[data-news-filter]").forEach(b => {
-              b.className = "px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5";
+              b.className = "shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white border border-white/5";
             });
-            btn.className = "px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-[#ccff00] text-black font-extrabold shadow-[0_0_15px_rgba(204,255,0,0.3)]";
+            btn.className = "shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-[#ccff00] text-black font-extrabold shadow-[0_0_15px_rgba(204,255,0,0.3)]";
             state.activeNewsCategory = btn.getAttribute("data-news-filter");
             renderNews();
           });
@@ -1940,9 +1970,9 @@ Hola! Leí la novedad sobre "${item.title}" en la web de Kinetic y me gustaría 
         document.querySelectorAll("[data-bio-goal]").forEach(btn => {
           btn.addEventListener("click", () => {
             document.querySelectorAll("[data-bio-goal]").forEach(b => {
-              b.className = "p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#0d0f15] border-white/10 text-gray-300 hover:border-white/20";
+              b.className = "p-3.5 sm:p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#0d0f15] border-white/10 text-gray-300 hover:border-white/20";
             });
-            btn.className = "p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#141722] border-[#ccff00] shadow-[0_0_25px_rgba(204,255,0,0.15)] text-white -translate-y-1";
+            btn.className = "p-3.5 sm:p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#141722] border-[#ccff00] shadow-[0_0_25px_rgba(204,255,0,0.15)] text-white -translate-y-0.5 sm:-translate-y-1";
             state.activeGoalId = btn.getAttribute("data-bio-goal");
             renderBioMatcher();
           });
