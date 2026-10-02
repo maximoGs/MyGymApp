@@ -2,17 +2,840 @@
 <html lang="es" class="scroll-smooth dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ccff00' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polygon points='13 2 3 14 12 14 11 22 21 10 12 10 13 2'></polygon></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KINETIC // Human Performance & Bio-Lab Gym</title>
-    <meta name="description" content="Centro de alto rendimiento, biohacking, actividades funcionales y nutrición avanzada. Reserva tus clases y pide suplementos directo por WhatsApp." />
+    <title>KINETIC LAB // Human Performance & Bio-Lab Gym</title>
+    <meta name="description" content="Centro de alto rendimiento, biohacking, reserva de actividades y nutrición deportiva. Pedidos y suscripciones directo por WhatsApp." />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ccff00' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polygon points='13 2 3 14 12 14 11 22 21 10 12 10 13 2'></polygon></svg>" />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['Syne', 'sans-serif'],
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
+              mono: ['Space Grotesk', 'monospace'],
+            },
+            colors: {
+              neon: '#ccff00',
+              cyan: '#00f0ff',
+              void: '#07080a',
+              card: '#0f1118',
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <style>
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #07080a;
+        color: #e2e8f0;
+      }
+      .font-display { font-family: 'Syne', sans-serif; }
+      .font-mono { font-family: 'Space Grotesk', monospace; }
+      
+      .cyber-grid {
+        background-size: 40px 40px;
+        background-image: 
+          linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      }
+
+      @keyframes marquee {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-marquee {
+        display: flex;
+        width: 200%;
+        animation: marquee 22s linear infinite;
+      }
+      .animate-marquee:hover { animation-play-state: paused; }
+
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.35; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.05); }
+      }
+      .animate-pulse-glow { animation: pulseGlow 4s ease-in-out infinite; }
+
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #08090c; }
+      ::-webkit-scrollbar-thumb { background: #252833; border-radius: 9999px; }
+      ::-webkit-scrollbar-thumb:hover { background: #ccff00; }
+    </style>
   </head>
-  <body class="bg-[#08090b] text-[#e2e8f0] antialiased selection:bg-[#ccff00] selection:text-black overflow-x-hidden">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+  <body class="bg-[#07080a] text-[#e2e8f0] antialiased selection:bg-[#ccff00] selection:text-black overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-[#08090c]/90 backdrop-blur-xl border-b border-white/10 py-3.5 shadow-2xl transition-all">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between">
+          
+          <!-- Logo -->
+          <a href="#" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ccff00] to-[#00f0ff] p-[2px] transition-transform group-hover:scale-105">
+              <div class="w-full h-full bg-[#08090c] rounded-[10px] flex items-center justify-center text-[#ccff00] font-black text-lg">
+                ⚡
+              </div>
+            </div>
+            <div class="flex flex-col text-left">
+              <span class="font-display font-extrabold text-xl tracking-tight text-white flex items-center gap-1.5">
+                KINETIC <span class="text-[#ccff00] text-sm font-mono tracking-widest">//LAB</span>
+              </span>
+              <span class="text-[10px] font-mono tracking-wider text-gray-400 uppercase hidden sm:block">
+                Human Performance & Biohack
+              </span>
+            </div>
+          </a>
+
+          <!-- Live Gym Status Badge -->
+          <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ccff00] opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-[#ccff00]"></span>
+            </span>
+            <span class="text-gray-300">AFORO EN VIVO:</span>
+            <span class="text-[#ccff00] font-bold">64%</span>
+            <span class="text-gray-500">•</span>
+            <span class="text-gray-400">ABIERTO HASTA 23:00</span>
+          </div>
+
+          <!-- Navigation Links -->
+          <nav class="hidden md:flex items-center gap-1.5">
+            <a href="#actividades" class="px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Actividades</a>
+            <a href="#novedades" class="px-3 py-2 rounded-lg text-sm text-[#ccff00] hover:bg-[#ccff00]/10 transition-colors flex items-center gap-1.5 font-semibold">
+              <span>✨ Novedades</span>
+            </a>
+            <a href="#tienda" class="px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Suplementos</a>
+            <a href="#bio-matcher" class="px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Bio-Matcher</a>
+            <a href="#planes" class="px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Membresías</a>
+          </nav>
+
+          <!-- Right Action Buttons -->
+          <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Settings Modal Button (Configure WhatsApp) -->
+            <button 
+              onclick="openSettingsModal()" 
+              class="p-2 sm:p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-400 hover:text-[#ccff00] transition-colors"
+              title="Configurar número de WhatsApp para pedidos"
+            >
+              ⚙️
+            </button>
+
+            <!-- Shopping Cart Button -->
+            <button 
+              onclick="openCartDrawer()" 
+              class="relative flex items-center gap-2 px-3 py-2 rounded-xl bg-[#141720] hover:bg-[#1a1e2a] border border-white/10 text-white transition-all hover:border-[#ccff00]/40"
+            >
+              <span>🛒</span>
+              <span id="nav-cart-subtotal" class="text-xs font-mono font-bold hidden sm:inline">TIENDA</span>
+              <span id="cart-badge" class="w-5 h-5 rounded-full bg-[#ccff00] text-black text-xs font-bold flex items-center justify-center hidden">
+                0
+              </span>
+            </button>
+
+            <!-- Direct WhatsApp Button -->
+            <button 
+              onclick="sendDirectWhatsApp()" 
+              class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/30 text-[#25D366] font-semibold text-xs font-mono tracking-wider transition-all hover:scale-105"
+            >
+              <span>💬</span>
+              <span>WHATSAPP</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[92vh] pt-32 pb-16 flex flex-col justify-between overflow-hidden cyber-grid">
+      <!-- Glow Orbs -->
+      <div class="absolute top-1/4 -left-40 w-96 h-96 bg-[#ccff00]/10 rounded-full blur-[140px] pointer-events-none animate-pulse-glow"></div>
+      <div class="absolute top-1/3 -right-40 w-96 h-96 bg-[#00f0ff]/10 rounded-full blur-[140px] pointer-events-none animate-pulse-glow" style="animation-delay: 2s;"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Left Column -->
+          <div class="lg:col-span-7 space-y-6 text-left">
+            <div class="inline-flex flex-wrap items-center gap-2 p-1.5 pr-4 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md">
+              <span class="px-3 py-1 rounded-full bg-[#ccff00] text-black text-xs font-mono font-extrabold tracking-wider uppercase flex items-center gap-1.5">
+                ⚡ BIO-PERFORMANCE 2026
+              </span>
+              <span class="text-xs font-mono text-gray-300 flex items-center gap-1">
+                ✨ Salud celular & Fuerza divergente
+              </span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl xl:text-7xl font-display font-extrabold text-white tracking-tight leading-[1.05]">
+              REDEFINE TU <br />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-[#85ff7a] to-[#00f0ff] drop-shadow-[0_0_30px_rgba(204,255,0,0.3)]">
+                BIOLOGÍA.
+              </span>
+              <br />
+              DOMINA TU LÍMITE.
+            </h1>
+
+            <p class="text-base sm:text-lg text-gray-300 max-w-xl font-normal leading-relaxed">
+              El primer centro de entrenamiento donde la <strong class="text-white font-semibold">fuerza biomecánica</strong>, la <strong class="text-white font-semibold">recuperación térmica celular</strong> y la <strong class="text-[#ccff00] font-semibold">suplementación pura</strong> se orquestan en una sola experiencia. Reserva tus actividades y gestiona tus pedidos directo por WhatsApp.
+            </p>
+
+            <!-- Hero CTAs -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+              <button 
+                onclick="openBookingModal('hyrox-protocol')"
+                class="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#ccff00] text-black font-extrabold text-base transition-all duration-300 hover:bg-[#b8e600] hover:scale-[1.02] shadow-[0_0_25px_rgba(204,255,0,0.35)] active:scale-95"
+              >
+                <span>RESERVAR CLASE DE PRUEBA</span>
+                <span class="transition-transform group-hover:translate-x-0.5">↗</span>
+              </button>
+
+              <a 
+                href="#tienda"
+                class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-white font-semibold text-sm transition-all hover:border-[#00f0ff]/50 hover:shadow-[0_0_20px_rgba(0,240,255,0.15)]"
+              >
+                <span>TIENDA DE SUPLEMENTOS</span>
+                <span class="text-xs px-2 py-0.5 rounded-full bg-[#00f0ff]/20 text-[#00f0ff] font-mono font-bold">
+                  8 FÓRMULAS
+                </span>
+              </a>
+            </div>
+
+            <!-- Stats -->
+            <div class="pt-4 grid grid-cols-3 gap-4 border-t border-white/10 max-w-lg">
+              <div>
+                <div class="text-2xl sm:text-3xl font-display font-extrabold text-white">1,450+</div>
+                <div class="text-xs font-mono text-gray-400 uppercase mt-0.5">Socios Activos</div>
+              </div>
+              <div>
+                <div class="text-2xl sm:text-3xl font-display font-extrabold text-[#ccff00]">3°C - 90°C</div>
+                <div class="text-xs font-mono text-gray-400 uppercase mt-0.5">Cryo & Sauna</div>
+              </div>
+              <div>
+                <div class="text-2xl sm:text-3xl font-display font-extrabold text-[#00f0ff]">100%</div>
+                <div class="text-xs font-mono text-gray-400 uppercase mt-0.5">Vía WhatsApp</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column Card -->
+          <div class="lg:col-span-5 relative">
+            <div class="relative rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-b from-white/10 to-transparent p-2 backdrop-blur-xl shadow-2xl">
+              <div class="relative h-[480px] sm:h-[540px] rounded-2xl overflow-hidden group">
+                <img 
+                  src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80" 
+                  alt="Kinetic Athlete" 
+                  class="w-full h-full object-cover object-center filter contrast-110 brightness-90 group-hover:scale-105 transition-transform duration-700" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#08090c] via-black/40 to-transparent"></div>
+
+                <!-- Floating Holographic Badge -->
+                <div class="absolute top-4 left-4 right-4 flex items-center justify-between p-3 rounded-xl bg-black/60 backdrop-blur-md border border-white/10">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+                    <span class="text-xs font-mono text-white uppercase tracking-wider font-semibold">SALA HYROX EN CURSO</span>
+                  </div>
+                  <span class="text-xs font-mono text-[#ccff00] font-bold">ZONA 5 ATLETA</span>
+                </div>
+
+                <!-- Bottom Floating Overlay -->
+                <div class="absolute bottom-4 left-4 right-4 p-4 sm:p-5 rounded-2xl bg-[#0e1015]/90 backdrop-blur-md border border-white/10 text-left">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-[11px] font-mono uppercase tracking-widest text-[#00f0ff] font-bold">PROTOCOL PROTO-01</span>
+                    <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-mono font-bold">CUPOS DISPONIBLES</span>
+                  </div>
+                  <h3 class="text-lg font-bold font-display text-white mb-1">Hyrox & Contrast Thermal Lab</h3>
+                  <p class="text-xs text-gray-300 line-clamp-2 mb-3">
+                    60 minutos de desafío funcional seguido de inmersión en tinas frías para regeneración neuromuscular instantánea.
+                  </p>
+                  <div class="flex items-center justify-between pt-2 border-t border-white/10">
+                    <span class="text-xs text-gray-300 font-mono">⏱️ Hoy a las 19:00 hs</span>
+                    <button onclick="openBookingModal('hyrox-protocol')" class="px-3 py-1.5 rounded-lg bg-[#ccff00] text-black font-extrabold text-xs hover:bg-[#b8e600] transition-colors">
+                      RESERVAR ↗
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Infinite Kinetic Ticker Banner -->
+      <div class="w-full mt-12 py-3 bg-[#ccff00] overflow-hidden whitespace-nowrap border-y border-[#ccff00] select-none">
+        <div class="animate-marquee flex items-center gap-8">
+          <span class="text-black font-mono font-extrabold text-xs sm:text-sm tracking-widest uppercase flex items-center gap-2">
+            // HYROX OFFICIAL TRAINING HUB • // CRYO & CONTRAST THERAPY A 3°C • // CREAPURE® & WHEY HYDRO-ISOLATE • // ENTRENAMIENTO BIOMECÁNICO • // BIOHACKING & LONGEVIDAD ACTIVA • // RESERVAS Y PEDIDOS POR WHATSAPP • // HYROX OFFICIAL TRAINING HUB • // CRYO & CONTRAST THERAPY A 3°C • // CREAPURE® & WHEY HYDRO-ISOLATE • // ENTRENAMIENTO BIOMECÁNICO • // BIOHACKING & LONGEVIDAD ACTIVA • // RESERVAS Y PEDIDOS POR WHATSAPP
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN NOVEDADES DESTACADA -->
+    <section id="novedades" class="py-24 relative overflow-hidden bg-[#07080a]">
+      <div class="absolute top-1/2 left-0 w-80 h-80 bg-[#ccff00]/5 rounded-full blur-[120px] pointer-events-none"></div>
+      
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 text-left">
+          <div class="space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-xs font-mono text-[#ccff00] font-bold uppercase tracking-wider">
+              🔔 RADAR DE NOVEDADES & COMUNIDAD
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+              LO ÚLTIMO EN <br />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] to-[#00f0ff]">KINETIC LAB</span>
+            </h2>
+            <p class="text-sm sm:text-base text-gray-400 max-w-xl">
+              Nuevas zonas biomecánicas, lanzamientos de suplementación farmacéutica, competiciones y eventos exclusivos.
+            </p>
+          </div>
+
+          <!-- Filter Pills -->
+          <div class="flex flex-wrap gap-2">
+            <button data-news-filter="all" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-[#ccff00] text-black font-extrabold shadow-[0_0_15px_rgba(204,255,0,0.3)]">TODAS</button>
+            <button data-news-filter="instalaciones" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">ZONAS & SALUD</button>
+            <button data-news-filter="eventos" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">EVENTOS</button>
+            <button data-news-filter="tienda" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">TIENDA</button>
+            <button data-news-filter="talleres" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">TALLERES</button>
+          </div>
+        </div>
+
+        <!-- Featured News Grid Container -->
+        <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+      </div>
+    </section>
+
+    <!-- ACTIVIDADES & SESIONES SECTION -->
+    <section id="actividades" class="py-24 relative overflow-hidden bg-[#08090c]">
+      <div class="absolute top-1/3 -left-32 w-96 h-96 bg-[#00f0ff]/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 text-left">
+          <div class="space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00f0ff]/10 border border-[#00f0ff]/30 text-xs font-mono text-[#00f0ff] font-bold uppercase tracking-wider">
+              ⚡ ENTRENAMIENTO BIOMÉDICO
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+              ACTIVIDADES & <br />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#85ff7a] to-[#ccff00]">SESIONES GUIADAS</span>
+            </h2>
+            <p class="text-sm sm:text-base text-gray-400 max-w-xl">
+              Protocolos diseñados para adaptaciones biológicas concretas: hipertrofia inteligente, VO2 Max, resiliencia nerviosa y longevidad celular.
+            </p>
+          </div>
+
+          <!-- Category Filters -->
+          <div class="flex flex-wrap gap-2">
+            <button data-activity-filter="all" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-[#00f0ff] text-black font-extrabold shadow-[0_0_15px_rgba(0,240,255,0.3)]">TODAS</button>
+            <button data-activity-filter="endurance" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">RESISTENCIA & HYROX</button>
+            <button data-activity-filter="recovery" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">BIOHACKING & RECOVERY</button>
+            <button data-activity-filter="strength" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">FUERZA BIOMECÁNICA</button>
+            <button data-activity-filter="mobility" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">MOVILIDAD & FLOW</button>
+            <button data-activity-filter="combat" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">COMBATE</button>
+          </div>
+        </div>
+
+        <!-- Activities Grid Container -->
+        <div id="activities-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+      </div>
+    </section>
+
+    <!-- TIENDA DE SUPLEMENTOS & GEAR -->
+    <section id="tienda" class="py-24 relative overflow-hidden bg-[#07080a]">
+      <div class="absolute top-1/4 right-0 w-96 h-96 bg-[#ccff00]/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 text-left">
+          <div class="space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-xs font-mono text-[#ccff00] font-bold uppercase tracking-wider">
+              ✨ APOTECARIO & NUTRICIÓN BIOMÉDICA
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+              TIENDA DE <br />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-[#85ff7a] to-[#00f0ff]">SUPLEMENTACIÓN & GEAR</span>
+            </h2>
+            <p class="text-sm sm:text-base text-gray-400 max-w-xl">
+              Fórmulas limpias, sin rellenos innecesarios ni azúcares artificiales. Seleccionadas por fisiólogos para maximizar tu recuperación y rendimiento.
+            </p>
+          </div>
+
+          <!-- Product Filters -->
+          <div class="flex flex-wrap gap-2">
+            <button data-product-filter="all" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-[#ccff00] text-black font-extrabold shadow-[0_0_15px_rgba(204,255,0,0.3)]">TODAS</button>
+            <button data-product-filter="strength" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">CREATINA CREAPURE®</button>
+            <button data-product-filter="muscle" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">WHEY ISOLATE</button>
+            <button data-product-filter="hydration" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">ELECTROLITOS</button>
+            <button data-product-filter="energy" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">PRE-WORKOUT</button>
+            <button data-product-filter="recovery" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">MAGNESIO & SUEÑO</button>
+            <button data-product-filter="gear" class="px-3.5 py-1.5 rounded-full text-xs font-mono transition-all uppercase tracking-wider bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5">ACCESORIOS</button>
+          </div>
+        </div>
+
+        <!-- Guarantee Banner -->
+        <div class="mb-10 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#141720] to-[#0e1015] border border-white/10 flex flex-wrap items-center justify-between gap-4 text-left">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl text-emerald-400">🛡️</span>
+            <div>
+              <h4 class="text-sm font-bold text-white">Pureza y Calidad Farmacéutica Garantizada</h4>
+              <p class="text-xs text-gray-400">Certificados oficiales Creapure® e IFOS 5★ con materias primas sin aditivos sintéticos.</p>
+            </div>
+          </div>
+          <div class="text-xs font-mono text-[#00f0ff] flex items-center gap-2">
+            <span>PEDIDOS SEGUROS VINCULADOS A WHATSAPP</span>
+            <span class="w-2 h-2 rounded-full bg-[#00f0ff] animate-ping"></span>
+          </div>
+        </div>
+
+        <!-- Products Grid Container -->
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+      </div>
+    </section>
+
+    <!-- BIO-MATCHER INTERACTIVO -->
+    <section id="bio-matcher" class="py-24 relative overflow-hidden bg-[#08090c] border-y border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-left">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-xs font-mono text-[#ccff00] font-bold uppercase tracking-wider">
+            🧬 BIO-ALGORITMO DE EMPAREJAMIENTO
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+            DESCUBRE TU PROTOCOLO <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-[#85ff7a] to-[#00f0ff]">ACTIVIDAD + SUPLEMENTACIÓN</span>
+          </h2>
+          <p class="text-sm sm:text-base text-gray-400">
+            Selecciona tu objetivo prioritario y obtén la combinación sinérgica recomendada por nuestros fisiólogos.
+          </p>
+        </div>
+
+        <!-- Goal Tabs -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          <button data-bio-goal="goal-strength" class="p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#141722] border-[#ccff00] shadow-[0_0_25px_rgba(204,255,0,0.15)] text-white -translate-y-1">
+            <div class="text-xl mb-2">🏋️‍♂️</div>
+            <h3 class="text-sm font-bold font-display">Aumento de Fuerza & Masa</h3>
+          </button>
+          <button data-bio-goal="goal-hyrox" class="p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#0d0f15] border-white/10 text-gray-300 hover:border-white/20">
+            <div class="text-xl mb-2">⚡</div>
+            <h3 class="text-sm font-bold font-display">Resistencia Atlética Hyrox</h3>
+          </button>
+          <button data-bio-goal="goal-longevity" class="p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#0d0f15] border-white/10 text-gray-300 hover:border-white/20">
+            <div class="text-xl mb-2">🧬</div>
+            <h3 class="text-sm font-bold font-display">Salud & Longevidad Activa</h3>
+          </button>
+          <button data-bio-goal="goal-fatloss" class="p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden bg-[#0d0f15] border-white/10 text-gray-300 hover:border-white/20">
+            <div class="text-xl mb-2">🔥</div>
+            <h3 class="text-sm font-bold font-display">Quema Grasa & Tono</h3>
+          </button>
+        </div>
+
+        <!-- Strategy Box Container -->
+        <div id="bio-strategy-content" class="rounded-3xl bg-[#0f121a] border border-white/15 p-6 sm:p-10 shadow-2xl"></div>
+
+      </div>
+    </section>
+
+    <!-- PLANES & MEMBRESÍAS -->
+    <section id="planes" class="py-24 relative overflow-hidden bg-[#07080a]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-left">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00f0ff]/10 border border-[#00f0ff]/30 text-xs font-mono text-[#00f0ff] font-bold uppercase tracking-wider">
+            💎 ACCESO TOTAL // SUSCRIPCIONES
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+            ELIGE TU NIVEL DE <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#85ff7a] to-[#ccff00]">EVOLUCIÓN FÍSICA</span>
+          </h2>
+          <p class="text-sm sm:text-base text-gray-400">
+            Membresías transparentes sin permanencias. Todas activables directamente por WhatsApp.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          
+          <!-- Plan 1 -->
+          <div class="flex flex-col justify-between rounded-3xl p-8 bg-[#0d0f15] border border-white/10 hover:border-white/20 transition-all">
+            <div class="space-y-6">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono font-extrabold uppercase bg-white/10 text-gray-300">SIN COMPROMISO</span>
+              <div>
+                <h3 class="text-2xl font-display font-extrabold text-white">PASS EXPERIENCIA</h3>
+                <p class="text-xs text-gray-400 mt-1">Para descubrir el ecosistema</p>
+              </div>
+              <div class="flex items-baseline gap-1">
+                <span class="text-5xl font-mono font-extrabold text-white">$15</span>
+                <span class="text-xs font-mono text-gray-400">/ Pase diario único</span>
+              </div>
+              <ul class="space-y-3 border-t border-white/10 pt-6 text-xs text-gray-300">
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Acceso de día completo a sala biomecánica</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> 1 clase grupal guiada a elección</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Vestuarios con amenities premium</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Bebida isotónica de bienvenida</li>
+              </ul>
+            </div>
+            <button onclick="sendMembershipWhatsApp('pass-day')" class="w-full mt-8 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-mono text-xs font-bold border border-white/10 transition-colors">
+              Pedir Pase por WhatsApp 💬
+            </button>
+          </div>
+
+          <!-- Plan 2 (Popular) -->
+          <div class="flex flex-col justify-between rounded-3xl p-8 bg-gradient-to-b from-[#141826] to-[#0e1017] border-2 border-[#ccff00] shadow-[0_0_35px_rgba(204,255,0,0.18)] lg:-translate-y-3 transition-all">
+            <div class="space-y-6">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 rounded-full text-[10px] font-mono font-extrabold uppercase bg-[#ccff00] text-black">MÁS POPULAR</span>
+                <span class="text-[11px] font-mono text-[#ccff00] font-bold">✨ RECOMENDADO</span>
+              </div>
+              <div>
+                <h3 class="text-2xl font-display font-extrabold text-white">KINETIC PRO</h3>
+                <p class="text-xs text-gray-400 mt-1">El estándar para atletas comprometidos</p>
+              </div>
+              <div class="flex items-baseline gap-1">
+                <span class="text-5xl font-mono font-extrabold text-white">$65</span>
+                <span class="text-xs font-mono text-gray-400">/ mes</span>
+              </div>
+              <ul class="space-y-3 border-t border-white/10 pt-6 text-xs text-gray-300">
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Acceso ilimitado 7 días a la semana</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Todas las actividades y clases grupales</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Monitoreo cardíaco en pantallas</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Locker permanente y toallas ilimitadas</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> App de registro de marcas y cargas</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> 1 sesión de Cryo & Contrast Lab mensual</li>
+              </ul>
+            </div>
+            <button onclick="sendMembershipWhatsApp('plan-pro')" class="w-full mt-8 py-4 rounded-2xl bg-[#ccff00] hover:bg-[#b8e600] text-black font-mono font-extrabold text-sm shadow-[0_0_20px_rgba(204,255,0,0.35)] transition-all hover:scale-[1.02]">
+              Suscribirme por WhatsApp 💬
+            </button>
+          </div>
+
+          <!-- Plan 3 -->
+          <div class="flex flex-col justify-between rounded-3xl p-8 bg-[#0d0f15] border border-white/10 hover:border-white/20 transition-all">
+            <div class="space-y-6">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono font-extrabold uppercase bg-white/10 text-gray-300">EXPERIENCIA TOTAL</span>
+              <div>
+                <h3 class="text-2xl font-display font-extrabold text-white">ELITE BIOHACKER</h3>
+                <p class="text-xs text-gray-400 mt-1">Optimización biológica integral</p>
+              </div>
+              <div class="flex items-baseline gap-1">
+                <span class="text-5xl font-mono font-extrabold text-white">$115</span>
+                <span class="text-xs font-mono text-gray-400">/ mes</span>
+              </div>
+              <ul class="space-y-3 border-t border-white/10 pt-6 text-xs text-gray-300">
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Todo lo incluido en KINETIC PRO</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Cryo & Contrast Lab ILIMITADO (Hielo + Sauna)</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> 15% de descuento permanente en suplementos</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Evaluación mensual de bioimpedancia InBody</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> Plan nutricional personalizado y suplementación</li>
+                <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> 2 pases de invitado al mes</li>
+              </ul>
+            </div>
+            <button onclick="sendMembershipWhatsApp('plan-elite')" class="w-full mt-8 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-mono text-xs font-bold border border-white/10 transition-colors">
+              Solicitar Pase Elite por WhatsApp 💬
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="relative bg-[#050608] border-t border-white/10 pt-16 pb-12 overflow-hidden text-left">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+          
+          <div class="space-y-4">
+            <span class="font-display font-black text-2xl tracking-tight text-white flex items-center gap-2">
+              ⚡ KINETIC <span class="text-[#ccff00] font-mono">//LAB</span>
+            </span>
+            <p class="text-xs text-gray-400 max-w-sm leading-relaxed">
+              Donde la ciencia biomédica, el alto rendimiento biomecánico y la nutrición pura convergen. Pedidos y reservas inmediatas por WhatsApp.
+            </p>
+            <div class="flex items-center gap-3 pt-1">
+              <button onclick="sendDirectWhatsApp()" class="px-4 py-2 rounded-xl bg-[#25D366] text-black font-mono font-extrabold text-xs tracking-wider">
+                CHAT WHATSAPP 💬
+              </button>
+              <button onclick="openSettingsModal()" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 text-xs border border-white/10">
+                ⚙️ Ajustes
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <h4 class="text-xs font-mono uppercase tracking-widest text-[#ccff00] font-bold">SEDE & HORARIOS</h4>
+            <div class="space-y-1.5 text-xs text-gray-300">
+              <p>📍 Av. de la Innovación 45, Distrito Deportivo</p>
+              <p>🕒 Lun - Vie: 06:00 - 23:00</p>
+              <p>🕒 Sáb - Dom: 08:00 - 20:00</p>
+              <p>📱 WhatsApp: <span id="footer-whatsapp-display" class="font-mono text-[#ccff00]">+34600123456</span></p>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <h4 class="text-xs font-mono uppercase tracking-widest text-[#00f0ff] font-bold">SECCIONES</h4>
+            <ul class="space-y-1.5 text-xs font-mono text-gray-400">
+              <li><a href="#actividades" class="hover:text-white">→ Clases & Hyrox Protocol</a></li>
+              <li><a href="#novedades" class="hover:text-white">→ Radar de Novedades</a></li>
+              <li><a href="#tienda" class="hover:text-white">→ Suplementación Creapure®</a></li>
+              <li><a href="#bio-matcher" class="hover:text-white">→ Bio-Matcher Interactivo</a></li>
+              <li><a href="#planes" class="hover:text-white">→ Membresías y Pases</a></li>
+            </ul>
+          </div>
+
+          <div class="space-y-3">
+            <h4 class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">GARANTÍA TOTAL</h4>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Entrenadores certificados, control biomecánico individual y suplementación libre de aditivos sintéticos.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-gray-500">
+          <div>© 2026 KINETIC LAB. Despliegue estático autónomo para GitHub Pages.</div>
+          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="hover:text-white">
+            Volver Arriba ↑
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- MODAL: RESERVA DE ACTIVIDAD -->
+    <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden">
+      <div class="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#0e1017] border border-white/15 shadow-2xl text-left">
+        <div class="relative h-44 sm:h-52 w-full overflow-hidden">
+          <img id="booking-modal-img" src="" alt="Actividad" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0e1017] via-black/40 to-transparent"></div>
+          <button onclick="closeBookingModal()" class="absolute top-4 right-4 p-2 rounded-full bg-black/60 text-white font-bold">✕</button>
+          <div class="absolute bottom-4 left-6 flex items-center gap-2">
+            <span id="booking-modal-spots" class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-bold"></span>
+          </div>
+        </div>
+
+        <div class="p-6 sm:p-8 space-y-6">
+          <div>
+            <h2 id="booking-modal-title" class="text-2xl sm:text-3xl font-display font-extrabold text-white"></h2>
+            <p id="booking-modal-coach" class="text-xs sm:text-sm text-gray-400 mt-1"></p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 p-3 rounded-xl bg-white/[0.03] border border-white/5 text-center text-xs font-mono">
+            <div><span class="text-gray-400">DURACIÓN:</span> <strong id="booking-modal-duration" class="text-white"></strong></div>
+            <div><span class="text-gray-400">CALORÍAS:</span> <strong id="booking-modal-calories" class="text-[#ccff00]"></strong></div>
+          </div>
+
+          <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+            <div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-gray-300 mb-2 font-bold">1. Selecciona Turno:</label>
+              <div id="booking-modal-slots" class="grid grid-cols-1 sm:grid-cols-2 gap-2"></div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-gray-300 mb-2 font-bold">2. Tipo de Inscripción:</label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                <label class="p-2.5 rounded-xl border border-white/10 bg-black/40 text-gray-300 flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="booking-pass-type" value="Clase de Prueba Gratuita" checked class="accent-[#ccff00]" />
+                  <span>Clase de Prueba Gratis</span>
+                </label>
+                <label class="p-2.5 rounded-xl border border-white/10 bg-black/40 text-gray-300 flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="booking-pass-type" value="Sesión Suelta ($18)" class="accent-[#ccff00]" />
+                  <span>Sesión Suelta ($18)</span>
+                </label>
+                <label class="p-2.5 rounded-xl border border-white/10 bg-black/40 text-gray-300 flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="booking-pass-type" value="Membresía Mensual" class="accent-[#ccff00]" />
+                  <span>Membresía Mensual</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-mono text-gray-400 mb-1">Nombre Completo *</label>
+                <input id="booking-name" type="text" required placeholder="Ej. Lucas Rossi" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs" />
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-gray-400 mb-1">Tu Teléfono / WhatsApp *</label>
+                <input id="booking-phone" type="tel" required placeholder="Ej. +34 612 345 678" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-gray-400 mb-1">Observaciones (Opcional)</label>
+              <textarea id="booking-notes" rows="2" placeholder="Ej. Es mi primera vez entrenando..." class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold text-sm font-mono tracking-wider shadow-[0_0_20px_rgba(37,211,102,0.35)] transition-all">
+              CONFIRMAR Y ENVIAR RESERVA POR WHATSAPP 💬
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: DETALLE DE NOVEDAD -->
+    <div id="news-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden">
+      <div class="relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-3xl bg-[#0e1017] border border-white/15 shadow-2xl text-left">
+        <div class="relative h-56 w-full overflow-hidden">
+          <img id="news-modal-img" src="" alt="Novedad" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0e1017] via-transparent to-transparent"></div>
+          <button onclick="closeNewsModal()" class="absolute top-4 right-4 p-2 rounded-full bg-black/60 text-white font-bold">✕</button>
+          <div class="absolute bottom-4 left-6 flex gap-2">
+            <span id="news-modal-tag" class="px-3 py-1 rounded-full bg-[#ccff00] text-black font-mono font-bold text-xs uppercase"></span>
+            <span id="news-modal-date" class="px-3 py-1 rounded-full bg-black/60 text-gray-300 font-mono text-xs border border-white/10"></span>
+          </div>
+        </div>
+
+        <div class="p-6 sm:p-8 space-y-4">
+          <h2 id="news-modal-title" class="text-2xl font-display font-extrabold text-white"></h2>
+          <p id="news-modal-content" class="text-sm text-gray-300 leading-relaxed"></p>
+          <div class="pt-4 flex gap-3">
+            <button onclick="sendNewsWhatsApp(state.selectedNews ? state.selectedNews.id : '')" class="flex-1 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-black font-bold font-mono text-xs">
+              Consultar sobre esto por WhatsApp 💬
+            </button>
+            <button onclick="closeNewsModal()" class="px-4 py-3 rounded-xl bg-white/10 text-gray-300 text-xs">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE-OVER: CARRITO DE COMPRAS -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden bg-black/80 backdrop-blur-sm hidden">
+      <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+        <div class="w-screen max-w-md bg-[#0d0f15] border-l border-white/10 shadow-2xl flex flex-col justify-between text-left">
+          
+          <div class="p-5 border-b border-white/10 flex items-center justify-between bg-[#11141d]">
+            <h3 class="text-base font-bold font-display text-white flex items-center gap-2">
+              <span>🛒</span> Tu Carrito de Suplementos
+            </h3>
+            <button onclick="closeCartDrawer()" class="p-2 rounded-xl bg-white/5 text-gray-400 hover:text-white">✕</button>
+          </div>
+
+          <!-- Items list -->
+          <div class="flex-1 overflow-y-auto p-5 space-y-4">
+            <div id="cart-empty-state" class="h-full flex flex-col items-center justify-center text-center p-8 space-y-3">
+              <span class="text-4xl text-gray-500">🛒</span>
+              <h4 class="text-white font-bold text-base">Tu carrito está vacío</h4>
+              <p class="text-xs text-gray-400">Agrega suplementos de la tienda para realizar tu pedido directo por WhatsApp.</p>
+            </div>
+
+            <div id="cart-items-container" class="space-y-3"></div>
+
+            <div id="cart-checkout-section" class="space-y-4 hidden pt-2">
+              <!-- Coupon -->
+              <form id="coupon-form" class="flex gap-2">
+                <input id="coupon-input" type="text" placeholder="Cupón (ej. KINETIC10)" class="flex-1 px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-xs text-white uppercase font-mono" />
+                <button type="submit" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-mono font-bold text-white">APLICAR</button>
+              </form>
+
+              <!-- Delivery options -->
+              <div>
+                <label class="block text-xs font-mono text-gray-400 mb-1.5 uppercase">Modalidad de Entrega:</label>
+                <div class="grid grid-cols-2 gap-2">
+                  <button data-delivery-method="pickup" class="p-2.5 rounded-xl border border-[#ccff00] bg-[#ccff00]/10 text-white font-bold text-xs text-left">
+                    🏬 Retiro en Gym
+                    <span class="text-[10px] text-gray-400 block font-normal">Recepción (Gratis)</span>
+                  </button>
+                  <button data-delivery-method="delivery" class="p-2.5 rounded-xl border border-white/10 bg-black/40 text-gray-400 text-xs text-left">
+                    🚚 A Domicilio
+                    <span class="text-[10px] text-gray-400 block font-normal">Envío express</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Customer Form -->
+              <div class="space-y-2 pt-2 border-t border-white/10">
+                <input id="cart-name" type="text" required placeholder="Tu Nombre completo *" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-xs text-white" />
+                <input id="cart-phone" type="tel" required placeholder="Tu Teléfono de WhatsApp *" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-xs text-white" />
+                <div id="cart-address-wrapper" class="hidden">
+                  <input id="cart-address" type="text" placeholder="Dirección completa de entrega *" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-[#00f0ff]/40 text-xs text-white" />
+                </div>
+                <input id="cart-notes" type="text" placeholder="Notas (Sabor preferido, etc.)" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-xs text-white" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Checkout actions -->
+          <div class="p-5 border-t border-white/10 bg-[#11141d] space-y-3">
+            <div class="space-y-1 text-xs font-mono">
+              <div class="flex justify-between text-gray-400">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal">$0.00</span>
+              </div>
+              <div id="cart-discount-row" class="flex justify-between text-[#ccff00] hidden">
+                <span>Descuento:</span>
+                <span id="cart-discount-amount">-$0.00</span>
+              </div>
+              <div class="flex justify-between text-sm font-bold text-white pt-1 border-t border-white/10">
+                <span>TOTAL ESTIMADO:</span>
+                <span id="cart-total" class="text-[#ccff00] font-mono text-base">$0.00</span>
+              </div>
+            </div>
+
+            <button onclick="handleCartCheckout(event)" class="w-full py-4 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold text-sm font-mono tracking-wider shadow-[0_0_20px_rgba(37,211,102,0.35)] transition-all">
+              FINALIZAR PEDIDO POR WHATSAPP 💬
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: AJUSTES DE WHATSAPP -->
+    <div id="settings-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden">
+      <div class="relative w-full max-w-md p-6 rounded-3xl bg-[#0e1017] border border-white/15 shadow-2xl text-left">
+        <button onclick="closeSettingsModal()" class="absolute top-4 right-4 p-2 rounded-full bg-white/5 text-gray-400 hover:text-white">✕</button>
+        <h3 class="text-xl font-bold font-display text-white mb-2">⚙️ Vinculación WhatsApp</h3>
+        <p class="text-xs text-gray-300 mb-4 leading-relaxed">
+          Todos los pedidos de la tienda y reservas se transfieren a este número de teléfono con mensajes formateados automáticamente.
+        </p>
+
+        <form onsubmit="saveWhatsAppSettings(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-mono uppercase text-gray-400 mb-1">Número (Con código país, sin '+' ni espacios):</label>
+            <input id="settings-phone-input" type="text" required class="w-full px-3 py-2.5 rounded-xl bg-black/60 border border-white/15 text-white font-mono text-sm" placeholder="Ej. 34600123456 o 54911..." />
+          </div>
+          <div class="flex gap-2">
+            <button type="button" onclick="sendDirectWhatsApp('Hola! Test de vinculación de WhatsApp.')" class="flex-1 py-2.5 rounded-xl bg-white/10 text-xs font-mono text-white">Probar Test</button>
+            <button type="submit" class="px-5 py-2.5 rounded-xl bg-[#ccff00] text-black font-bold text-xs font-mono">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2 pointer-events-none max-w-sm w-full"></div>
+
+    <!-- FLOATING WHATSAPP LAUNCHER -->
+    <div class="fixed bottom-6 left-6 z-40">
+      <button onclick="sendDirectWhatsApp()" class="flex items-center gap-2 p-3 sm:px-4 sm:py-3 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-black font-mono font-bold text-xs tracking-wider shadow-[0_0_25px_rgba(37,211,102,0.45)] transition-all hover:scale-105 active:scale-95">
+        <span class="text-lg">💬</span>
+        <span class="hidden sm:inline">¿Hablamos por WhatsApp?</span>
+      </button>
+    </div>
+
+    <!-- CORE STATIC SCRIPT -->
+    <script src="./js/app.js"></script>
   </body>
 </html>
